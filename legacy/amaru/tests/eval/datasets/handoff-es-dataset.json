@@ -1,0 +1,837 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "es_greeting_no_handoff",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Hola"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe usar el saludo fijo de Amaru (guía digital de Xperiencia). NO debe hacer handoff ni mostrar JSON BANT. No inventa planes ni precios."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_no_handoff_turn1_booking",
+      "prompt": {
+        "role": "user",
+        "parts": [{
+          "text": "Hola, quiero reservar mi cupo para el Tour de Ballenas para mañana, yo pago y decido."
+        }]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "NO debe hacer handoff en el primer mensaje del usuario (gate de turno). Continúa la conversación con el customer agent sin decir que el handoff fue rechazado y sin enlaces de pago."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_browsing_plans",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino."
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "qué planes tienes para Bogotá?"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe usar search_context para planes de Bogotá y responder con info de la KB. NO debe hacer handoff. No inventa precios ni fechas fuera del resultado de la tool."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_whale_watching_short_reply",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino.\n¿Qué tipo de aventura o destino tienes en mente hoy?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Avistamiento de ballenas"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe responder sobre avistamiento de ballenas (search_context o conversación guiada). NO debe decir que esperará la próxima intervención, NO debe mencionar handoff/BANT/estado interno/JSON. NO debe hacer handoff en este turno."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_whale_watching_bant_polluted_history",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino.\n¿Qué tipo de aventura o destino tienes en mente hoy?"
+                  }]
+                }
+              },
+              {
+                "author": "qualifier",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "{\"interest_level\":\"Medium\",\"budget_status\":\"NotMentioned\",\"purchase_urgency\":\"Uncertain\",\"has_decision_authority\":false,\"explicit_human_request\":false,\"plan_and_date_confirmed\":false}"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Avistamiento de ballenas"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Shape C: historial incluye JSON BANT del qualifier de un turno previo. Debe responder sobre avistamiento de ballenas. forbidden_output debe ser 1 (sin handoff/BANT/estado interno/esperaré). NO handoff."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_mid_funnel_no_date",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino."
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Me interesa mucho el Tour al Cocuy. Quiero ir, pero todavía no sé en qué fecha."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "El qualifier puede marcar interés alto, pero NO debe haber handoff: falta fecha o ventana cercana. Sigue asistiendo sin improvisar que un asesor se contactará."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_handoff_plan_and_date",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, busco planes de naturaleza"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nPara el Tour de Ballenas hay salida del 18 al 21 de septiembre y del 25 al 28. ¿Cuál te late?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Quiero reservar el del 18 al 21, viajo solo y yo decido."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Plan publicado + salida concreta + frase explícita de reservar ESA salida (turn >= 2). Handoff en Python; respuesta visible = bridge breve al asesor (motivo reserva), sin vender ni enlaces de pago."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_explicit_human",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino."
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Quiero hablar con un asesor humano, por favor."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe detectar explicit_human_request vía qualifier y hacer handoff en Python. Responder con un bridge breve al asesor (tono del ejemplo, puede personalizar), sin venta ni más preguntas."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_no_payment_links",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. En Tatacoa hay salida del 18 al 21 de septiembre. ¿Reservamos esa?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Sí, reserva esa, yo pago."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Tras handoff exitoso, la salida visible debe ser solo un bridge al asesor (puede mencionar plan/fecha del historial). Penaliza enlaces de pago/checkout/reserva, instrucciones de anticipo, o seguir vendiendo."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_insufficient_budget",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte."
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Me encanta el Cocuy y quiero ir este fin de semana, pero honestamente no me alcanza el presupuesto, está fuera de mi alcance."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "El qualifier debe marcar budget_status Insufficient. NO debe haber handoff (lead descalificado). Puede empatizar y seguir conversando sin derivar ni improvisar handoff."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_cocuy_date_triggers",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, me interesa el Cocuy"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. El Cocuy es una experiencia brutal de páramo. ¿Quieres que te cuente qué incluye o vas más por fechas?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Quiero reservar. Viajo solo."}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Perfecto. No tenemos fechas fijas publicadas; las salidas dependen de disponibilidad y cupos. ¿Tienes alguna fecha en mente?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "el 14 de marzo"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "NO debe hacer handoff: mencionó una fecha (el 14 de marzo) después de 'quiero reservar', pero no hay salida publicada listada ni pregunta de reservar esa. Sigue en automático (aclara disponibilidad u ofrece grupo a medida si no hay fechas fijas). Sin bridge ni JSON BANT."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_pick_date_from_list_no_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, me interesa Bahía Solano"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. Para Bahía Solano hay del 9 al 12 de octubre y del 16 al 19. ¿Cuál te queda?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Del 9 al 12"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Eligió un rango de la lista. NO handoff. Debe preguntar una vez si quieren reservar ESA salida. Sin improvisar asesor ni JSON BANT."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_date_plus_logistics_no_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, busco Bahía Solano"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. El plan a Bahía Solano es de 4 días. ¿Qué fechas tienes?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Es para el 5 de octubre, ¿hay traslado desde Bogotá? y el itinerario"
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Fecha + consulta de traslado/itinerario. NO handoff. Responde la duda logística con search_context. No improvisar asesor."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_availability_window_no_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, me late el Cocuy"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. El Cocuy es páramo. ¿Quieres que te cuente qué incluye?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Justo tengo del 27 al 3, ¿qué incluye el plan?"
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Ventana de disponibilidad + pregunta de incluye. NO handoff. Describe el plan. No derivar ni improvisar asesor."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_want_reserve_then_pick_date_no_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, quiero reservar"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. Para septiembre hay del 11 al 14 y del 18 al 21. ¿Cuál te late?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "18 al 21"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Dijo 'quiero reservar' al inicio y luego eligió un rango. NO reutilizar el 'quiero reservar' como confirmación. NO handoff. Preguntar una vez si reservan ESA salida."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_yes_after_reserve_ask",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, Tour de Ballenas"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. Hay salida del 18 al 21 de septiembre. ¿Reservamos esa?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Sí, dale"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Sí/dale después de que Amaru preguntó si reservan ESA salida. Handoff en Python; bridge breve; motivo plan y fecha confirmados. Sin links de pago ni JSON BANT."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_no_published_date_offer_custom",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, Cocuy"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. Para el Cocuy hay del 9 al 12 y del 16 al 19 de octubre."
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Ninguna de esas fechas me sirve"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Ninguna fecha publicada le sirve. NO handoff. Ofrecer armar un grupo o fecha a medida. No improvisar asesor antes de que acepten."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_accept_custom_group_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, Cocuy"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. Las salidas publicadas son del 9 al 12. Si ninguna te queda, podemos armar un grupo o fecha a medida con otras personas. ¿Lo armamos?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Sí, ármenlo"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Aceptó armar grupo/fecha a medida. Handoff en Python; bridge breve; motivo grupo a medida (NO 'plan y fecha confirmados'). Sin links de pago."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_high_score_no_confirm_no_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, me encanta el Cocuy, viajo solo y yo decido"}]
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "¡Hola! Soy Amaru. El Cocuy es páramo. El precio está alineado con lo que buscas. ¿Quieres itinerario?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Sí, cuéntame el itinerario y el precio, me interesa mucho ir pronto"
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Interés alto / score alto sin confirmar reserva de una salida listada. NO handoff. Sigue el bot con info. No improvisar asesor."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_disability_access_handoff",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Hola, ¿puedo ir en silla de ruedas al Cocuy? Voy con alguien con discapacidad"
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Pregunta de discapacidad/accesibilidad (turno 1 OK). Handoff en Python; bridge breve; motivo accesibilidad. NO afirmar ni negar si el plan es apto. Sin JSON BANT."
+          }]
+        }
+      }
+    }
+  ]
+}

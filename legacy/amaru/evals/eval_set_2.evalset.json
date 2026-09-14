@@ -1,0 +1,241 @@
+{
+  "eval_set_id": "eval_set_2",
+  "name": "eval_set_2",
+  "eval_cases": [
+    {
+      "eval_id": "Hola",
+      "conversation": [
+        {
+          "invocation_id": "e-9b9d475b-9544-4ac1-8ae7-0dd91c7f86b7",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Hola"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino.",
+                "thought_signature": "AY89a1-S74sjYgqLxxvuTefnKnBEr5ew8JF6GcAqc1_GMQv9DV3u-R5KzvE43alVrVxqSEbc3pmgpfVc9Or2j89HwFtVVqQjWR_JYFeqrdnXnDXTs3fKsCJq7qCuxhgBh-aENj1RBR6qFbj9Cuj9GLRREj9m-DO4rcFkdFlSSd1Y123upcXBCQzmz4ViK7Jbk_SeX2MEJv_uL4bejDlKhqeeYm_8hcSeoCWkw3RzpB8xD5vnirqIdJ3abImG6WooVpdyrOBUY1tNYc8sJk1R0DJkRkd7Mw2QJmWAcC1aJEjLfbaTz_G-40Bev3hjMEctzN9ENVYVRX4aoQLkz8Y5zzUshyP_nbfZJS6p0XjjbhFbmwKFEfjkCNKdcGp-jgROMTCQtvSY0SWOs31E72pDFchepeFhZX4DYvs1MxumlPjn1mU1u3DoLtNeXxgwO6rWVnCsAYKTVMBD86Trmj74_l6FD6wKXDKXX0bnJUfB2d70UYfS2cQ9kS50JCj4sBAn4uGQ1E5_0fUvMCxBxukEsXV6uecqeL3j9C5vb09OdLEyt0k2RYzAGC3EBPqJ71Lz4Z3bRS7WdLf8dbCo-tq5pTGHuqdpOTe4_8pJSGPFcx3TAnw0utx0uwBvU5jhxrIq_Q78SM1ONAmJIBc87KT94PhA_vuuUxG0zc-B5oX3YfTgwV5NTREaooNU_LvPhIQRMSzqdN7eRAA9YdGk4Gpq7qX9vhUo-vLjxnaGHOOw83_JVKgzr5-fHTDQJ3ti4KbOO7I02kFwW-71dNBlSnLgNc-vG19vK4XqDC6y7FBwVtKPkHEzojw2-4fV72iT-ZvgP03ma2sUpHX-2uqsxe9vgi-s4_6SL9fiJKUBI0jH52uxzomTapm_X825KsrVQYw9B4NSnCk9H-wWTG-r4DmOdiK_RGwE4JK-Uy2XKBJyysXuAk1n4nz8UWY-NfJ0bjW6sL3OTq7WecBMKyrGvO_Ke8VKXjNx-Qo-R6mhkbdYyD9FxObwveCPY4pq9hWRMMODr9I8XLoIehmA_11IYLHMmLRTohhhl9V5asCvkNU33YO8DAjcU_rbf91Lve-o9FhXxDZiimp1AfYysWlN1aIkqRTdIPz5GAhyYf14jGncbNAMNCmdp3b7nh-lWJT6xopQi2JkneJV0dYA9lO1XrxchsjtEgBq-906wsRJ2H14M_ch2g36Sn3N8Oy_qviNpUFqLXMT5Rmp_NdUiNy5oM-a82pRy1MNWKHTKElchDmjYtfdXJucL-R6M23RZbDa1jeW7dSIF1yu7HzHtP9X347femmjAm9vqNOSso8Qx64gZfQoKXkGYQGU--MzhXDvazm-WOGHq_kedzx9nPibZestJEvSBm9eTR-oG6LsnwB1qjnIEWoc258ic4i0PfVHuyUQijGjb1656K7cSf3X6dObYxshRurpx8Ya3Y3QZJVhakHxYa-9agtAh6mU8gFLL0AMbfBpML_4gmmaM-KMDNw1TJIUgcw07Bv5c_hA3WhPGMpaICI3xSwpWVYSUsq_9b4vcPjIYWHe8LXfyb00TZGU_Rc1JcfEaAMyiUeq97Opor7D3i1Mue-JY2a4H1SLHl39Tc3phby9YYPahWUf5Ibs-xgpqFjKNSCtLn0XkdGXnDZ_0cskcC9gQpPlqazLVy0PLYAo5kbGJLmNzqEAu8F8ksgNCpD-xJNwuqOGX6jJW2F9qh7QQhVuY8YxORqp3Z8MRYygeO67Y35JS4i-kufRPIQ_6fEqWojFQ6a159U4AKoT-aLuuAp-4w0BDx_YEyg3c3S4IokAL8gknHNOyA2ZdZ_8hFTyGLLCchxevDiAWGqvvk0C672uGrDFev4Y5LfY7nJZ89GadPikz7pfJ5rS_ZKXtSMHm1q2jBpGB9AUjQH3f_RY3d0TpOodw7d-uCZXlHrjy9PCJS3l44fCmu7tbqRnVrKym_aeK6hFRs-YDGAg7z3quh1tHbLUQHm_lG4IAUE6ejh6QH0ZUNpwF-wBX5IkTZUvPwDa8aESbgwyQPcumnPFGoPX6UIhyoYwUyniTUCL7UjOAw6Jx-bfXkWABfjxkW7su_iUBUi3AuPwFl66UGdjlJXDHPoDUhW-g5bf38OQok9T9GFTKSn4AdaWLuMgFFRKiu20d5hdZrjikRFYDkMwHR-YSkJ5WGGXvKOC64poGP-FLpkNBUx7GWZHbd7N9wCMawSHzPL1NuZfxgb5L0a-Mmi1tRd74Z1dyTugeXT_LdcZg5S_BWN3qtWg_8SF5eGRivsBz3sts__-I2pRjDshelOIRUwrj8vDq-bhSeFtboXr4UFMmDffBIoHRkizSvk_Dh7ql5rFuaOVMkVSYrhIcn0JUTQ15qRyCOdO4_NzWL-07MG95TqCwnerwbi1eJuZLasn3yTmTn0N5oVGQpLhPwDKE0hSmswa4Qf7j2vEoHtgD0Vl4qRC2U3oqBcPuVIHcVNEEVMT5SckF3AgbRVWsQ5u8Mr-LYNQkbwNSST1dHn2b0pAQl21TIFM_Iex01HCbZbn9hE3GuDy_PKcKoxO73OqzLlhyo7X_V_lQslwEJRkIKysKTUrGCrIJujIkHlYdplC1ah56rj9nZ-r2Mf64qwIPPedv4ztqmdjyPGemnaJtK0Sb_VFnMCKBmwymLZoonNIHJ824BPtP5uHx5e18Pto4XWFlFaO8Tw_ksagXMd_REyuK6GoDkpFAw2Rt6heYG9wRgMlpKGpbls-wsQNC5Jq5pD1mCv7A0YTCgRLlWZhJn3q-zt-u7hkEF5II6XhmYAy02RubSogPiaPwNG5JRIMQGW8wty8jgQ7gy_UvQZoknuMic7hqILEHpBncvyZR7uwbH2gAAGB3j2v36Cz7TxWi_TKKfcEAEOW3yLy2VEHXLFsx0O5Z8dUGFeos1LMw9MVnewjo1SGWWcz8L66UVdGvdDFh8p1XliRfAaihLEdzDDUZ45KTVDT8utKlPSFoRUy5r3LUgwN2B_fLAKTXefLKSe6ffMO0HtILO9oYW1lPGdAIjwdMXESgJxK2pln2_Gl1qWKQbNIATxieam-7hMmgxI4wd9d1pIDqpw0OCTHTCHXN1XszVwysCYaGMX49pmh-3AaXp7uGCsVHeVD-jqmwfBM"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {},
+          "creation_timestamp": 1779949080.0798342
+        },
+        {
+          "invocation_id": "e-068cda4c-1d84-49a2-86c6-e1e86d2f42b4",
+          "user_content": {
+            "parts": [
+              {
+                "text": "qie planes tienes para bogota?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Tenemos planes increíbles muy cerca, como volar en *Parapente en Guatavita* o pura adrenalina con *Rafting en Tobia*. ⛰️\n\nTambién hay *Trekking en Chingaza* para desconectarse. ¿Buscas más aventura extrema o algo tranquilo para caminar?",
+                "thought_signature": "Cv8OAY89a19vFSDI4WqJ7PkfATI6CQ2oXMDyn7T8ZfKJijaL4O__4Xq8mi6dYQrY4b4uUgKG3uNJ3oqpUCFrxL1x12NudJ7Cfam7FLf1rFSuDC2GB0QxIWl0NUbXGkfEV8RnEg6ZE740leEfDtYOLiQ4J7QYNN49mOMDFtUJOUXvtsSIAhqKx-ZPLYovMYLzfJH-OVH4juiymGcsKBMcnDSPunnwr0p7LUh0NOr27zsraT4atfZOieEE9PZ1iPiHS5AkBqO0Cpd0jqqbB5en3k6Z1adHUK5uCrJWsiy1cLba1r85eT1u9-vJJzx9KTSN0Yz15iivsZZiDXzW5nvSO1mU8TorrStEl-Z2_NXmt92zroxYuxe_CiDWQgYsGiZkBEdb6xgCi-JHDzJPXlv2510PZThDNZND3G8zTV_-MuD5HtT3_IGZQ1UoKlrUUz4DT63FIWqxIJFZpU_eCAhaTsO87Jok-DtjW6rtegHLD6BlScLdM0iO4WCHhhAB_ZBe5CuLfET0XydssXXtdZV-A-ftvcXzTUZfy5UwlZzI-3acpRFjSOrBL41XqeOxIZ_j8TBAyz8yWtnB0-qDEQqA_K3Ll6WYH_1jYq7AhSVlpg9kZdHhaNfjz-9HIu5JDKrluMZzIm60gFbzpK_tXmVFjoC1l7734Z4a4OZO4d4Jx20vSSRd6K1mHcSWvyskoIwTaL0sXM9ubOT3QETk-3sQenZ7RZdFYO1ndmirF2PfQqqdmtwsDtQc3aAvh5wrmbw2OKlaL7n1mM09x3FXAGL5N4PlxCfw0PGwjuhX4dLurf35ahxnZ-wDwPPG2ZYAX5FuJ16bvDQUHPgOrdSNSeMxNhD7UtfZRotuumjg3TNN7NsqVughJnwYOSEMjBhs9nfpL3AZzzmqe7To7Z0hDLf1t85mlID6g4yBJPpT2BUDoy69ha6Fsa-qNLM7CWOzO_tukTDKFlG0k4fKSo7MmA5z8rNosB2i1LLTyOpYDdPz_vZTh3R34vOLXQR9HKUUzN8_jgSRh6cSSdIYYsLssf9b3sgBMNLCrfvMOI8TMGx_Yq34ODubVjkmY00sqfjfXoe94cRbypKo10zyuToS8l-FRXKVlsr5lfCp_RNEkFjb2zcunLqFd6_13gEngoKoIzFHztDgER_UDOEx08-khs2W2UVmFBTJE-UDtmpOuIgZuojZdF9wYXEjfPJDoEWsRQXDnlYz4J6Sdw_Yj0Pek-g20YF75NAPrWipwyf_wlooAXYpE8M86Ghls0KMSrpe1zZnQGC2_jCn82fe5Vrw6-NnCz6ULkH648tLpVLPWl1rGHXMxqix9xvl3CTZt0WM575Qe3djGoJ-u2Djtrcr-j4px8RHOsaeWLQPoLqhCbM2RuvJtsP2IWXrm6KsDgVk_Upjd73Oeq4kbAU0wi66CTd3zhFWIrEkTJOPDKOCxlc2sEeCmNZ32Re8nnpz_DUjUZ81SmS6UQjXhMxLq6JEz8UxI_FCfqwRSzFSI3zsNQ6sXP7ZEEAz4S8E0LY_pC2fhkg9NzV-aoUZzehTCOgp3XxDRY_Tkd6kWGqtmhqTa1RBoeMATjF7gcD_bd2FtxCAsM9miVsUw0m49u1oa_jLqXEswK-5CJTSdWWOkSZst3phZSJGVYfvMHtfY7lSgoTu3xwOpR3byd90vKvN559D9ZcJnyzqQayqDftGq_ySk9SuHCPjsOuTzbGAGoWhCW6ICpOrYcxt_Y1EPsdMmdbblFePh1PcEKRMJM5IAJ1EVpposJks4OziZVf437LOkIZ1yPTTjaKASFXxjA9owwq-ImNQatbeItvTKsGVwYEwnJBMCgM9WSBTi3VzZ9-LNXonb-2kedC577bf6xKrWaLjSxJRbb7yLVXYoPJ8oeuQD7VgmlLYVE-ZSuCZy7aEIslM2YXwNJKsVVmCHAMRkzLd7oT6fH6e8_t1NcFIVdE3-vMqcwLDbCcTsvoS81VwwOzKeANZDJdlZYzfq32OrqomajncEJLQS2-jgANrfXQr1aBesvfS5v81GWLG6bZ8_20Cfw-NaBoSnJiosw0-jXHgfbVdTbWtXXHKPvPL8cqX5y-DGK5u3_W3xmezQLmJTvRnoPTBWMYaO_WUb_OoMFjXdw0K_4lM6qOVrtLGEm97wzbD6uxOeXRJvvaJWGJ6gDCX_JWIPgIomULQquKeqOAyRUh79zUiw-PT8GyytpFtStEiIgfCdvfheuSE4N17QhzXx64KASVe2ZecLy-iDAxHWBdvmvmw_K05nxHnlaCtBybJydVYYkTi8qGhEUYUcPs2IhYzEP3XVbQ8LjxJENFDy6UHKfwIZf_mTP4X4OeqeSuFia-TwKP3VKNvu7BjHaq_C-eeTZUx2GWfB81Y9Z2CkU_9n0Rv7g3q1chymAkYRUbn8bW8kuHgXE2fm6En9et0OlK0xZxmOH87v2Zb4e4wXY36ljBo96-6ADwpOrJwjQ8jJfnDe09IOfm9VKe9e3Uojy2DX5qrM36r3PM54Ys8CrTDyUkelQ63pT1iKWY3J8OF6K0RhIhkGlqYMNqIk2ShJDlAnC8="
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "amaru",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-79d1b8a9-ef9b-44e9-9c3a-601199130a98",
+                        "args": {
+                          "query": "planes en Bogotá"
+                        },
+                        "name": "search_context"
+                      },
+                      "thought_signature": "CuoEAY89a194KK25nEZevS7Nk_jv7CfXXVhjG1-ip4wvMpfH7oQ309HVGjddBku7a_c0InkADzZYv1qxM6UsLYTVJpXBbZkmQqopCxP9UeLOmlDNtdJTRL0DNcc_Orc86nZCYrCDtApmVvvdOtNUh487Io2lVAfPYhg3cm5OmHMW49ZibDdoai28aJfpvEn7u4xtZCl28SMVGj7DlhLHFXu3bRnsDZsDC-TIor_EDNCAplvZ6QKBLoxrmMKEt-t1okmFgQHHfePc7uiNQuXQ8tjyTY6ov79YS9LTyo7xCtJXaL_HWiuJfEm8I2hACuqU6MsabRNw48AG65uyuiO2cZRdAmchXnMoM0UTmGv5vqauxDWTYA_fHK1aH7riQMYFJPolVHl7w3iQ69bGhVHBWBs_wlgq3F5X2iQzfaJtItomEzaw0GqSWLjSggFfSVZE_vEABsNf0zPTz5joO0145G7x3rL5aRrbLELw8FAW-RlDBpezIYpTscQCmYbeOqXbPolHLV7_SB4kAGn-iHdlRqYItKvwG2Q_x8v7OyihXSPpK5obbFb-Q0SHdlm9ApiWDc-ZklRsl6QBOcvO6p5CUGWKWF4T5hwqLe5Mm2GKVTqn7olLP-g47z6Y1cAgAT1X8wuoqYgsT-g0zSEVxo1nxhHE996jZ6gmX6AG_DJ8AJT_qL-tfdjXHm7mBKSHuE8tCJAQuohIJgreG-Dp8JxlRbEXFAtChF0Xb3hMJyFShmfyEdHN19UiShmKdOX7QuR_HaC3onGNk9ZJSLyb84MFIHcFgRII1Ke67FnN9oINBuKrYlVeuqg95E0ypop9"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-79d1b8a9-ef9b-44e9-9c3a-601199130a98",
+                        "name": "search_context",
+                        "response": {
+                          "content": "Result 1\nContent: **PLAN**: Parapente en Guatavita\n**CATEGORÍA**: Aventura / Aire\n**DURACIÓN**: 1 Día\n**DESCRIPCIÓN**: Experiencia de vuelo en parapente biplaza sobre el Embalse de Tominé y la sabana de Bogotá. Acompañado por pilotos profesionales, permite disfrutar de vistas panorámicas de montañas y valles desde una perspectiva única. Es una actividad apta para principiantes que combina la sensación de libertad con la contemplación de la naturaleza.\n**UBICACIÓN**: Guatavita, Cundinamarca (aproximadamente a una hora y media de Bogotá).\n**ALTURA**: 2.700 MSNM\n**DIFICULTAD**: 1/5 Principiante\n**TIPO**: Parapente\n**ITINERARIO**: \n- Encuentro en el punto de la zona de vuelo.\n- Verificación de datos.\n- Charla técnica con instructor asignado.\n- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.\n\nResult 2\nContent: **PLAN:** Pasadía en Tobia: Aventura y Naturaleza en Cundinamarca\n\n**CATEGORÍA:** Pasadía / Aventura\n\n**DURACIÓN:** 1 Día\n\n**DESCRIPCIÓN:** Tobia es conocido como la capital del turismo de aventura en Cundinamarca. Es un destino ideal para quienes buscan adrenalina y contacto con la naturaleza a pocas horas de Bogotá. Ofrece una combinación de actividades extremas, ríos cristalinos y un clima cálido. Entre sus atractivos principales se encuentran el rafting en el río Negro, torrentismo en cascadas de 35 metros, canopy, puentes colgantes, senderismo por antiguas carrileras de tren y pozos naturales.\n\n**UBICACIÓN:** Tobia, Cundinamarca (Provincia de Gualivá), aproximadamente a dos horas de Bogotá.\n\n**ALTURA:** 750 MSNM\n\n**DIFICULTAD:** 2/5 Principiante\n\n**TIPO:** Rafting, Torrentismo y Senderismo\n\nResult 3\nContent: **PLAN**: Trekking por Supatá\n\n**CATEGORÍA**: Trekking y Aventura\n\n**DURACIÓN**: 1 Día\n\n**DESCRIPCIÓN**: Embárcate en una aventura única con una ruta de trekking en Supatá, un destino ideal para los amantes del senderismo y la naturaleza. Descubre senderos rodeados de exuberante vegetación, cascadas cristalinas y vistas panorámicas de la cordillera, mientras te sumerges en un entorno natural lleno de biodiversidad y aire puro. Supatá es un tesoro escondido en Cundinamarca, perfecto para quienes buscan una escapada de aventura y conexión con la naturaleza. Su clima templado y su geografía montañosa lo convierten en un destino ideal para el ecoturismo. Los atractivos principales incluyen senderismo en la montaña, cascadas escondidas, vistas panorámicas de los Andes y actividades adicionales como canyoning y torrentismo.\n\n**UBICACIÓN**: Supatá, Cundinamarca (a aproximadamente 2 horas de Bogotá).\n\n**ALTURA**: 1.798 MSNM\n\n**DIFICULTAD**: 3/5 Intermedia\n\n**TIPO**: Trekking, Canyoning y Torrentismo\n\nResult 4\nContent: - **PLAN**: Parque Nacional Natural Chingaza\n- **CATEGORÍA**: Pasadía / Trekking\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Explora la majestuosidad del Parque Nacional Natural Chingaza, una de las reservas naturales más impresionantes de Colombia. Con su ecosistema de páramo, lagunas sagradas y una biodiversidad única, este destino es perfecto para quienes buscan desconectarse de la ciudad y sumergirse en la belleza natural de los Andes. El parque cuenta con más de 76,000 hectáreas y es hogar de especies emblemáticas como el oso de anteojos y el venado de páramo. Fue territorio sagrado para la cultura muisca, quienes consideraban sus lagunas como lugares de ofrendas y rituales.\n- **UBICACIÓN**: La Calera, Cundinamarca (a 1.5 horas de Bogotá).\n- **ALTURA**: 4000 MSNM\n- **DIFICULTAD**: 2/5 Principiante\n- **TIPO**: Trekking\n- **ITINERARIO**: \n    - 06:00 am: Punto de encuentro (se acuerda con el grupo).\n    - 07:00 am - 08:00 am: Llegada a La Calera y entrada al Parque Nacional.\n\nResult 5\nContent: - **PLAN**: Caminata y Escalada en Suesca\n- **CATEGORÍA**: Alta montaña / Ecoturismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Suesca es el epicentro de la escalada en Colombia, famoso por sus imponentes farallones de roca de más de 4 km de longitud. Es un destino ideal para el ecoturismo, senderismo y deportes al aire libre, ubicado en una región de montañas y lagunas con una fuerte tradición ancestral Muisca (su nombre significa \"Roca de las Aves\"). Los atractivos incluyen escalada en roca para todos los niveles, trekking por miradores naturales, ciclomontañismo y visitas a la Laguna de Suesca.\n- **UBICACIÓN**: Suesca, Cundinamarca (a 1 hora y 30 minutos de Bogotá).\n- **ALTURA**: 2.584 MSNM\n- **DIFICULTAD**: 2/5 Principiante\n- **TIPO**: Alta montaña\n- **ITINERARIO**: \n    * 9:00 am: Encuentro en la entrada de las Rocas de Suesca.\n    * 9:30 am: Recorrido sobre la vía férrea para llegar a la zona de escalada.\n    * 10:00 am: Instrucción de equipos y normas en la roca.\n\nResult 6\nContent: - **PLAN**: Noche Iluminada en Boyacá\n- **CATEGORÍA**: Plan Familiar\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Recorrido por los municipios más emblemáticos del altiplano boyacense para disfrutar de los alumbrados navideños. La experiencia incluye visitas a la Laguna de Sochagota en Paipa, el Pantano de Vargas, Corrales (pueblo tradicional), Nobsa (famoso por su navidad artesanal), Tibasosa y el Puente de Boyacá. Es un viaje de aventura diseñado para compartir en familia o amigos, recorriendo paisajes coloniales decorados con millones de luces.\n- **UBICACIÓN**: Boyacá, Colombia.\n- **ALTURA**: 2.351 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Aventura / Familiar\n- **ITINERARIO**: Parada en Ventaquemada, visita a la Laguna de Sochagota, entrada al Pantano de Vargas, paradas en Corrales, Nobsa y Tibasosa, visita al Puente de Boyacá y entrada a Pueblito Boyacense (solo en fechas seleccionadas).",
+                          "artifact": [
+                            {
+                              "id": "5bdeac2b-95cb-49f0-a87d-3c4cf2880a22",
+                              "content": "**PLAN**: Parapente en Guatavita\n**CATEGORÍA**: Aventura / Aire\n**DURACIÓN**: 1 Día\n**DESCRIPCIÓN**: Experiencia de vuelo en parapente biplaza sobre el Embalse de Tominé y la sabana de Bogotá. Acompañado por pilotos profesionales, permite disfrutar de vistas panorámicas de montañas y valles desde una perspectiva única. Es una actividad apta para principiantes que combina la sensación de libertad con la contemplación de la naturaleza.\n**UBICACIÓN**: Guatavita, Cundinamarca (aproximadamente a una hora y media de Bogotá).\n**ALTURA**: 2.700 MSNM\n**DIFICULTAD**: 1/5 Principiante\n**TIPO**: Parapente\n**ITINERARIO**: \n- Encuentro en el punto de la zona de vuelo.\n- Verificación de datos.\n- Charla técnica con instructor asignado.\n- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.",
+                              "metadata": {
+                                "title": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                                "mime_type": "text/markdown",
+                                "source_url": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                                "chunk_count": 4,
+                                "chunk_index": 0,
+                                "gemini_cleaned": true,
+                                "discovered_from": "links",
+                                "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                                "cleansing_failed": false,
+                                "knowledge_source_id": "05034d82-4bb6-48ed-9ff3-f2ac9f4632a4"
+                              }
+                            },
+                            {
+                              "id": "29a23631-56a1-49a3-bc99-4b0549016d6a",
+                              "content": "**PLAN:** Pasadía en Tobia: Aventura y Naturaleza en Cundinamarca\n\n**CATEGORÍA:** Pasadía / Aventura\n\n**DURACIÓN:** 1 Día\n\n**DESCRIPCIÓN:** Tobia es conocido como la capital del turismo de aventura en Cundinamarca. Es un destino ideal para quienes buscan adrenalina y contacto con la naturaleza a pocas horas de Bogotá. Ofrece una combinación de actividades extremas, ríos cristalinos y un clima cálido. Entre sus atractivos principales se encuentran el rafting en el río Negro, torrentismo en cascadas de 35 metros, canopy, puentes colgantes, senderismo por antiguas carrileras de tren y pozos naturales.\n\n**UBICACIÓN:** Tobia, Cundinamarca (Provincia de Gualivá), aproximadamente a dos horas de Bogotá.\n\n**ALTURA:** 750 MSNM\n\n**DIFICULTAD:** 2/5 Principiante\n\n**TIPO:** Rafting, Torrentismo y Senderismo",
+                              "metadata": {
+                                "title": "https://xperiencia.com.co/tours/pasadia-en-tobia/",
+                                "mime_type": "text/markdown",
+                                "source_url": "https://xperiencia.com.co/tours/pasadia-en-tobia/",
+                                "chunk_count": 6,
+                                "chunk_index": 0,
+                                "gemini_cleaned": true,
+                                "discovered_from": "links",
+                                "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                                "cleansing_failed": false,
+                                "knowledge_source_id": "cf6f64e5-a9be-4df0-ac24-fa4e2d3e14f2"
+                              }
+                            },
+                            {
+                              "id": "e577122d-4646-4913-b308-5f507317e80b",
+                              "content": "**PLAN**: Trekking por Supatá\n\n**CATEGORÍA**: Trekking y Aventura\n\n**DURACIÓN**: 1 Día\n\n**DESCRIPCIÓN**: Embárcate en una aventura única con una ruta de trekking en Supatá, un destino ideal para los amantes del senderismo y la naturaleza. Descubre senderos rodeados de exuberante vegetación, cascadas cristalinas y vistas panorámicas de la cordillera, mientras te sumerges en un entorno natural lleno de biodiversidad y aire puro. Supatá es un tesoro escondido en Cundinamarca, perfecto para quienes buscan una escapada de aventura y conexión con la naturaleza. Su clima templado y su geografía montañosa lo convierten en un destino ideal para el ecoturismo. Los atractivos principales incluyen senderismo en la montaña, cascadas escondidas, vistas panorámicas de los Andes y actividades adicionales como canyoning y torrentismo.\n\n**UBICACIÓN**: Supatá, Cundinamarca (a aproximadamente 2 horas de Bogotá).\n\n**ALTURA**: 1.798 MSNM\n\n**DIFICULTAD**: 3/5 Intermedia\n\n**TIPO**: Trekking, Canyoning y Torrentismo",
+                              "metadata": {
+                                "title": "https://xperiencia.com.co/tours/trekking-por-supata/",
+                                "mime_type": "text/markdown",
+                                "source_url": "https://xperiencia.com.co/tours/trekking-por-supata/",
+                                "chunk_count": 6,
+                                "chunk_index": 0,
+                                "gemini_cleaned": true,
+                                "discovered_from": "links",
+                                "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                                "cleansing_failed": false,
+                                "knowledge_source_id": "ea39fb51-e27c-471b-ae33-246e3e617f8d"
+                              }
+                            },
+                            {
+                              "id": "78bd1e13-73b6-4fa3-a60e-0a5437ea3467",
+                              "content": "- **PLAN**: Parque Nacional Natural Chingaza\n- **CATEGORÍA**: Pasadía / Trekking\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Explora la majestuosidad del Parque Nacional Natural Chingaza, una de las reservas naturales más impresionantes de Colombia. Con su ecosistema de páramo, lagunas sagradas y una biodiversidad única, este destino es perfecto para quienes buscan desconectarse de la ciudad y sumergirse en la belleza natural de los Andes. El parque cuenta con más de 76,000 hectáreas y es hogar de especies emblemáticas como el oso de anteojos y el venado de páramo. Fue territorio sagrado para la cultura muisca, quienes consideraban sus lagunas como lugares de ofrendas y rituales.\n- **UBICACIÓN**: La Calera, Cundinamarca (a 1.5 horas de Bogotá).\n- **ALTURA**: 4000 MSNM\n- **DIFICULTAD**: 2/5 Principiante\n- **TIPO**: Trekking\n- **ITINERARIO**: \n    - 06:00 am: Punto de encuentro (se acuerda con el grupo).\n    - 07:00 am - 08:00 am: Llegada a La Calera y entrada al Parque Nacional.",
+                              "metadata": {
+                                "title": "https://xperiencia.com.co/tours/parque-nacional-natural-chingaza/",
+                                "mime_type": "text/markdown",
+                                "source_url": "https://xperiencia.com.co/tours/parque-nacional-natural-chingaza/",
+                                "chunk_count": 5,
+                                "chunk_index": 0,
+                                "gemini_cleaned": true,
+                                "discovered_from": "links",
+                                "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                                "cleansing_failed": false,
+                                "knowledge_source_id": "84a09251-ebbc-45ce-8f6a-007628cd32c2"
+                              }
+                            },
+                            {
+                              "id": "daf60099-d473-409e-b235-371b0d9964c8",
+                              "content": "- **PLAN**: Caminata y Escalada en Suesca\n- **CATEGORÍA**: Alta montaña / Ecoturismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Suesca es el epicentro de la escalada en Colombia, famoso por sus imponentes farallones de roca de más de 4 km de longitud. Es un destino ideal para el ecoturismo, senderismo y deportes al aire libre, ubicado en una región de montañas y lagunas con una fuerte tradición ancestral Muisca (su nombre significa \"Roca de las Aves\"). Los atractivos incluyen escalada en roca para todos los niveles, trekking por miradores naturales, ciclomontañismo y visitas a la Laguna de Suesca.\n- **UBICACIÓN**: Suesca, Cundinamarca (a 1 hora y 30 minutos de Bogotá).\n- **ALTURA**: 2.584 MSNM\n- **DIFICULTAD**: 2/5 Principiante\n- **TIPO**: Alta montaña\n- **ITINERARIO**: \n    * 9:00 am: Encuentro en la entrada de las Rocas de Suesca.\n    * 9:30 am: Recorrido sobre la vía férrea para llegar a la zona de escalada.\n    * 10:00 am: Instrucción de equipos y normas en la roca.",
+                              "metadata": {
+                                "title": "https://xperiencia.com.co/tours/escalada-en-suesca/",
+                                "mime_type": "text/markdown",
+                                "source_url": "https://xperiencia.com.co/tours/escalada-en-suesca/",
+                                "chunk_count": 4,
+                                "chunk_index": 0,
+                                "gemini_cleaned": true,
+                                "discovered_from": "links",
+                                "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                                "cleansing_failed": false,
+                                "knowledge_source_id": "149c28a8-d737-4135-9420-0b06189ff396"
+                              }
+                            },
+                            {
+                              "id": "a1ae1825-a3ce-4bfe-ac7e-1e877ecc0e89",
+                              "content": "- **PLAN**: Noche Iluminada en Boyacá\n- **CATEGORÍA**: Plan Familiar\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Recorrido por los municipios más emblemáticos del altiplano boyacense para disfrutar de los alumbrados navideños. La experiencia incluye visitas a la Laguna de Sochagota en Paipa, el Pantano de Vargas, Corrales (pueblo tradicional), Nobsa (famoso por su navidad artesanal), Tibasosa y el Puente de Boyacá. Es un viaje de aventura diseñado para compartir en familia o amigos, recorriendo paisajes coloniales decorados con millones de luces.\n- **UBICACIÓN**: Boyacá, Colombia.\n- **ALTURA**: 2.351 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Aventura / Familiar\n- **ITINERARIO**: Parada en Ventaquemada, visita a la Laguna de Sochagota, entrada al Pantano de Vargas, paradas en Corrales, Nobsa y Tibasosa, visita al Puente de Boyacá y entrada a Pueblito Boyacense (solo en fechas seleccionadas).",
+                              "metadata": {
+                                "title": "https://xperiencia.com.co/tours/tour-una-noche-iluminada-por-boyaca/",
+                                "mime_type": "text/markdown",
+                                "source_url": "https://xperiencia.com.co/tours/tour-una-noche-iluminada-por-boyaca/",
+                                "chunk_count": 4,
+                                "chunk_index": 0,
+                                "gemini_cleaned": true,
+                                "discovered_from": "links",
+                                "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                                "cleansing_failed": false,
+                                "knowledge_source_id": "daf97783-86ee-4328-afff-af63d1ddb72a"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-4b2533c3-4e68-4950-989d-539f3d837d23",
+                        "args": {
+                          "skill_name": "whatsapp-formatting"
+                        },
+                        "name": "load_skill"
+                      },
+                      "thought_signature": "AY89a18xe00VXZAG3vJjXQccRsdc6BrCzPwg_yuutr_kmFTWavFnNtLQ_Z_7djwkiY4kTLTRrrHG5mddh8_anF3hydfhk3oimjf3UUAl-X7MFIBDdf4vQdl64IdEak-u3rK71P22di0dcc7yLMTXs4-TvOAND08z-w-PWdcej7VRLsaYcl99nFyYSR-90BvLP5rmq5Mm3N3ZI924j8b_lrUfXu5MsOnshYm9hlLuVwZfH_vW12lOHMyV7HKJSBxHtm3guUj3Rn45LWPRLMlf4P_-cYNzbZjts1sFcFID7LON3G-kBXyk3LxbcRpR1O339KEUGq-vtc766tnSPyctN3t3d5Cyes8TKtopekPfarBKQWUtNNc1Fqx6_IK-SuHmXd__ZjaQ-V1jMN0bXTzIINRnKPNVK3TuLxZUbYCo9cgOeq2BRg1giXAvRmn7_HBbrARCwVQGkwy0Q9rzpfx7rUdTPpV3qqnagdwOZ4ua6xhaqEnPi41iT4kj42F0a5wyTj498Or3sTFWCwnZq0nRqbnKTkQLKFsLlKRjrjr_wnFtd6viuoEJmacBHP54uFu4b6FY43U1uBbyc4kciP0fR_VxNTxMkYnvx8gw2szVrX7sg2a6sE6Kn1Dl3Y3mRrLqIDv-5txbz7iVvWKec6J19JH88MjCFUzZa2o3reErQWZ5258OZc57wODrsUS7aWMBpulbpzIVpN6-QXb5mxGfRL8mKXBRmgm_ReX83ww4xnq2dMAEqXT4nDDlp959SJ1t_PYPkupl7V0UQHma7M6QdRRMeRRXN7E0MRy76fk1ck9m6QRDxJiKOtueDXyV50pTizdY0iFNYzZ9u21yPK85COSNS9Fi1dSRnkF335XkWIbT9bYq7NiWeuz6TEVf-axYNgn_i28302gFrddtOfymGD8HEijsFNMFLNgNVS6q4E7qbXSE68WsZrRb9zupeb4ow552KGbeOkbmfMhUM4AtlFOWoaRmBBdg1LLmebQJcgT5HdcIeb0uEt2t9e6qSIXaqw6FzX9p6CwQ_ZQ5UeJPlVCYNQ0ZlEg1F0oTo0dOtos67qxpE9N6cJnbdfDWNvOEu37P_WPyrAhyp3dN_Ll3fsHr_VFRX4Q4JZCy6gAvCBx2aeqO7NZjHmvNrMR33_-owcQY6sX353R0Lp6wq53S539LH6u6g5Qo5YiUeitTPw93PKjLKU09fppu2g2ewSlu_Xh4KCqR-qGZ5_51rTsHX-tH7I3qjdRsLEcOfVDbjviNPFPrEKItUEcMS1YO-HZWVOp1jAZLuSi8bbBXcv6CHlTwio2DsTHNXlNIWYDMEPPHU2GvGEFsu4sJVSKwOqV-_Mxi2WDFFOITK2GFdkVrRmw8QNOUDLv-wkSu0g9peUO4M203nl47lH_j_RLeexymwrg8Y8PZaa0erhg4MovcyZVYQbkODlsKgmjQuaSLtML9KP295dUUv4o5gDTZg62oXSYaaPS7acmmbF90P8WdOgyFt2xo109_7zYfCWzEE6Klvi6HxA3Gm3XtpxdU8MSN6nL_9XK32q33yuB5T8DCj3pKrdDo-Oniug_fuwYULca6jsELijyCEHwo7HfEt0eszpkfv_3RfwyroP2PN6cP_TiU2h7PZk8pwDQ4o4a1OoSRkJMfuGCESEheHikA-OOjZL-yQPihQi0050JJJRIyihELv7A0yXakcqxTAiEm6bOKqQktekJVAANMBFt9OTzVnNNFeME0AhOL-RM9BxJn-Oyqpi3L351HXFO-EY3gQ8x2OqRKNM9jLO4jt_mKfBisZ8x5a4ie_mQ7BfC2XhH_4qTiD0Gs0XDemMZL3pTvY1gMNn4hISKVXzs_56dja6uRjkqsbzumMaAkPNhV296KVGFy5TffZoTLr6kHOmZKIhFMeJrnyxD8pQQFDDcZO_WJFi1NRWIccLA5ZkxqJd0Trvcrj1GpyodSI2gGihAUkdOLq97gQHlXegiGFE4ZpgOMbG7Nm9Sd_vYrcnIPD0uCS1v69q6t-mELhFL7mVkXDp2EVRq43XSoPI7lCvjW3BnLC3llvq3DLZ3VVNmDpAh-ZTTR_YjfMAjNiRz3SAhrn3OhapjUmNM3YSkDQFJXnKvtU2wNGZ0ZnQQhtfrCXXTTqQwcqkrLM_UFR06jAeLeaSe-7GJ6vVt7Dx0oxZ3WRzop9zw8DZk_SkEAxM-A_VuwcBv-MyUoHc3Q9769kntUr5WNtthsasIbhCDlpfBtIibJTSgqhZgd5jN3bmg9PLRngcHLEl32sFx1oHy3HaINC3yFKOKrtyGwEBjFCrPsf1MZTlwgSjFcPDUyBNqhO1FRnBHvyehsUMQVorCmbHtswDz450e9cctFZHNoZGRIYZ4G4rEpV1Tx_SHMv1Zx7UajPq8EKo_e6Mr2NSWHbNrO3WIKhGSCH_RXvUhZadSW3bzDWIjYDF4ZrSOXOrh9hZJXrAueboq4Gpau8t2awfudlK29065YEexVjnfqodna7t2xFK6ew61v4AIBrxVhGLF3tZemvfIvvfTrRlVDznTkr5oq_jVgciRfj136hzVL9QQsGaIvx4JngxrZ8AbA5topDK_xrudvoxsk0tu5FgpbSsysyoGI3xwbM9E2rjWR8aSs4caS5pT_Go7eEtta2LwOdyCdSTYC7MzUF0lsdpLWfAE5d8sAt5hnpYRcaBJFqMnRucfm0YxakzL8oVEs__xPfPFcQiHOJe_bnCaNmkAsjEXJ9IWUC-00OjKnIRI-qL9cCsEWC8D3UChlpIm-jscDQnWcRwsr7ciOM4HWq3s1mqS1SyZ4WZpDGbDpiM3NJFWZ5jnMCvGBtFYztgSV-Ti3_JLDqvN7x3JCYOktBp-uRMOpcExbHW4sCoGqsew8t8PPmAfSNdjpl95HSCkcnelf7L3DnPh0jmsZFhiXDg6U17dNB0cLI_wdp-1msMV4xMATbHfM_uAIzaUEwLC8w7vb7fLsZs83alc0zyhC3siopkAMMkTGetysiNzUD60jvNZ6zn9cTm6kP2gVcw95xFv7ORquFUjYBvxPnQCbhJEygRgHjN14nVwdTcwLls2un666OVId9JzSxtOQ5oeIawBmUyVZ69kw0Ev5B1nAWsAfMekhMdC9tWo4ZUNyGx9RwXIEN5WpoaInYRP_sLjf84Qrf5_sWCv2APQueEiHOY5VXyrqArVKzxQhZ92vJaa05Ml8jhqDdYvOZrkgLrwy0TB4ejW6-WET1BBAZuys-RsE3h1KcW8AlMyqyOwdaCxlJA_U0m_AF8udZlIPlzg="
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-4b2533c3-4e68-4950-989d-539f3d837d23",
+                        "name": "load_skill",
+                        "response": {
+                          "skill_name": "whatsapp-formatting",
+                          "instructions": "# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.\n\n---\n\nname: whatsapp-formatting\ndescription: Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n\n---\n\n# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.\n\n---\n\nname: whatsapp-formatting\ndescription: Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n\n---\n\n# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Correction Examples\n\n**Input:**\n\n```\nPara el plan del **Nevado del Ruiz (Murillo)**, que es el segundo.\nbullet **Duracion:** 2 dias y 1 noche.\nbullet **Precio:** Desde $385.000.\n```\n\n**Output:**\n\n```\nPara el plan del *Nevado del Ruiz (Murillo)*, que es el segundo.\n- *Duracion:* 2 dias y 1 noche.\n- *Precio:* Desde $385.000.\n```\n\n---\n\n**Input:**\n\n```\n## Fechas programadas\nbullet **Mayo:** 19 al 22\nbullet **Junio:** 26 al 29\n```\n\n**Output:**\n\n```\n*Fechas programadas*\n- *Mayo:* 19 al 22\n- *Junio:* 26 al 29\n```\n\n---\n\n**Input:**\n\n```\nPuedes ver mas info en [nuestro sitio](https://ejemplo.com/plan)\n```\n\n**Output:**\n\n```\nPuedes ver mas info en nuestro sitio: https://ejemplo.com/plan\n```\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.",
+                          "frontmatter": {
+                            "name": "whatsapp-formatting",
+                            "description": "Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.",
+                            "license": null,
+                            "compatibility": null,
+                            "allowed_tools": null,
+                            "metadata": {}
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1779949671.526767
+        }
+      ],
+      "session_input": {
+        "app_name": "amaru",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1779949763.743037
+    }
+  ],
+  "creation_timestamp": 1779949760.1899562
+}

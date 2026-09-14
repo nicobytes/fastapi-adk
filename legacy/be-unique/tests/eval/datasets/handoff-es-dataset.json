@@ -1,0 +1,318 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "es_greeting_sede",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Hola"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Saluda como Sofía, pregunta sede Sucre o Cochabamba, no deriva a humano, no inventa precios."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_no_handoff_turn1",
+      "prompt": {
+        "role": "user",
+        "parts": [{
+          "text": "Hola, quiero reservar depilación láser de axilas para mañana en Sucre, ya tengo presupuesto."
+        }]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Puede calificar el lead pero NO debe llamar request_human_handoff en el primer mensaje del usuario. Continúa la conversación sin decir que fue rechazado el handoff."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_rag_precio_sucre",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, quiero información de depilación"}]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Hola, soy Sofía, asistente de Be Unique Clínica Estética. ¿En cuál de nuestras sedes desea atenderse: Sucre o Cochabamba?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "En Sucre. ¿Cuánto cuesta el paquete de axilas?"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe usar search_context, responder de usted con datos de la KB para Sucre/axilas, sin mezclar Cochabamba."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_qualify_mid_funnel",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Hola, soy Sofía. ¿Sucre o Cochabamba?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Sucre. Me interesa el paquete de axilas y quiero agendar una valoración."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe llamar submit_lead_qualification con interés alto y urgencia de corto plazo. Continúa conversación/agenda; NO llamar request_human_handoff (handoff solo si pide persona)."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_handoff_ready",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, busco depilación láser"}]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Hola, soy Sofía. ¿Desea atenderse en Sucre o Cochabamba?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Sucre, zona axilas, paquete. Quiero reservar valoración para este fin de semana, yo decido y pago."
+                  }]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Perfecto. En Sucre la valoración cuesta Bs 100 y se descuenta si toma el tratamiento. ¿Le ayudo a coordinar la cita?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "Sí, confirme la reserva para el sábado por la mañana, por favor."
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "NO debe llamar request_human_handoff. Debe continuar con agenda (list_available_days / list_available_hours y/o book_appointment). Puede calificar el lead, pero confirmar sede/servicio/fecha no es handoff."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_explicit_human",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Hola, soy Sofía de Be Unique. ¿En qué sede desea atenderse?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{
+                    "text": "¿Puedo hablar con una asesora humana, por favor?"
+                  }]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe marcar explicit_human_request vía submit_lead_qualification y/o request_human_handoff, y responder solo con el mensaje de puente al asesor."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_no_handoff_browsing",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola"}]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Hola, soy Sofía. ¿Sucre o Cochabamba?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Solo curiosidad: ¿duele la depilación láser?"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe usar search_context y responder sin llamar request_human_handoff."
+          }]
+        }
+      }
+    },
+    {
+      "eval_case_id": "es_cbba_no_bs100",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "Hola, soy de Cochabamba"}]
+                }
+              },
+              {
+                "author": "be_unique",
+                "content": {
+                  "role": "model",
+                  "parts": [{
+                    "text": "Hola, soy Sofía. Con gusto le ayudo desde nuestra sede de Cochabamba. ¿Qué zona desea tratar?"
+                  }]
+                }
+              },
+              {
+                "author": "user",
+                "content": {
+                  "role": "user",
+                  "parts": [{"text": "¿La valoración tiene costo?"}]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{
+            "text": "Debe indicar que en Cochabamba la valoración no tiene costo. No debe mencionar Bs 100."
+          }]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "eval_set_id": "eval_set_1",
+  "name": "eval_set_1",
+  "eval_cases": [
+    {
+      "eval_id": "HHola",
+      "conversation": [
+        {
+          "invocation_id": "e-765630b6-9b99-4cfa-b979-955fcfc1f5b4",
+          "user_content": {
+            "parts": [
+              {
+                "text": "HHola"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino.",
+                "thought_signature": "AY89a1-BQJb7RoIDVR4v_R2c9ufrfloBWtZc5lLbU5n2Q0sd8xB883U3rq4BLUWoj759bBzc7mMIDfB0Oxsb1LpdGdGEBDMcJ8VH7iBXNKKAahFlUSNswp4uGtnOiw0CDwaoNWY9MU7Ust776ZCSfZqClBg6kmGKpftZbdPoqaX5FZVHgeqT_SgvVteXVuQCu2L6ghgHkRp0fuUVFou0wmKySj6MrQX0KuHEQXX7jc9-_6Qqkcad7582xkGeuO6_7M77vDUIHUaJn6gux6hSbMyEL2-R9gvitqUPOOgIcwar2CeSWJ5G5s8bMSzkVO9YbKuDBepdAdlvicDZOwWgwWAO3eRVzeZ35wMJvvXd6RDP9yxIwAmjhbfcX8BmmEFwGR8-gC_gT0vwbe5bj1H9x9JnCIVOrn5NXsEX19TLEm07bCacVQ0r71v8aVflSmTmtze1yX2oT8xoEtchxENssr2uosVqixn9X0lxB-JCZXfDfUT29rSlPamsRBMvdr6ht-2pPcy0GeX0DAZhle760oZaF2ewYdrmp-T4wIVwSXw5KHN4JL5e6_0l33WAdJhMHb5WLXXmkwvqUKjRMWq_nhdCxKTsSVZ2f0V1GISyQ-wxbyEZ1LN-xu87EVI_LVIELJ0Fpu7wK4PxopQgqLvFEAlHdK8aviG-beWG9uYatag3ja0q-btCcSMF92Oqs7QmSJdbPVVK09sygjQC4QQGgfsq_8s9jNlZje_8YErO7F3DcOLoWkbhDd2kDYLrfOy9e_C92kAMR7C-rSuCpT_UfWzOj-nhtJ5G4ZzcDEtr9oVBvoxFpKDplUG7fzXo9DhOGuRzGPBx9b2L90Qs4zZ-z5KVYmEetXCzvGMVm6NkQYl6nxlTsUbTbGee44gDl3C2NLaiq9J-_DqV4TveQ_3If32nokdq2c5PNeUfZ2xKUs8KcCjyJ3Pg9ecbRy3uw4z_vr125swsw_dxkn3l6fdj-cKjl7ec7XWPzFlmIO8Fh-EELfIHOW8OEw=="
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "amaru",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-09508a10-cce4-463f-a1b5-6feb8e6229db",
+                        "args": {
+                          "skill_name": "whatsapp-formatting"
+                        },
+                        "name": "load_skill"
+                      },
+                      "thought_signature": "CukJAY89a1-ecE9WZ_AeBPccWelcV17t72JZ_2R-5-tCuzGPExzfYvKXrfvUw2tdsF-NaZXo_KQjub8MKEQYrpIg4EgcqPii2VKDYh-2lOEP6q3Jyim3D6dV6uCq2pUy0WQiPLcMggq8yOk0QpDueWoFRXRyYDgHvFSRUsEmpU4PsMzP0kw4vlOJKVDNXbldHFdyE_PkU1HU9ok3uSkwfCgItJG2a-ooah9LDvj7ETscSuyJn6oDoT7i87ErtegCQJyeYOU5VgYugAeIfgd5frYFqoynIObudvtHs12EuYYoKFPV31Y7feZrIoP9jD9fH3WWWRqoquUZ_VEKW1m1SUqQeiLAo3m0EjXCfalTFw9vt44lnropcgtJSiXdthb43QiqvaPMOYV0pAfqDo6fkHr96yTUCwTh4z17AxEcoUHmRTqV2q8KmEfnDzBEGdJGeBRP7mhwSRDqZC3iJlZyXDGQNFg38W8MqvS3eNpcORYcNp_qV5CQhhKjyir1cM9cFtOp64ThEBFoF3BjgGnZXtJxopkXlerVrsbRiev5kIIKyCKLXIBrl4cu1FxJDKfC-VQaXRZeQq8O-rYgYbHSZF-Z_QYTc-RKOrpdrIbLZah1ZDK-G1m_E3vR4isPhObrHnVDZduzHVFJCqmmcFCJUiuXm9UY9wPfsKjmCX8oFDVRZE0E0gx8HylIjttD_cV7PBIx6NyfcdnDkMsTVJ7jlkvaBeybqOBGgwd4J-AhyAjiPiMFFN2qhzbLP99jKV62C99sv2jRBTq0yQYKe_PD8_mRRh4jS40kavD29YWcRLHbI54RVasRDBY0G1o8G6pmIA4TzR0LM1RT5-sFty-6nQns1WvnS1oFfv1_Tk224iW0FIoflTBEKntAK0FQ4G_kl35B69oyi1_K7EnvN2CMr1Xi0IlLPbE20V18-r-AKnfiiWJ0DTHvZGrO0CYB3rcaJcXmPjMU7GixxHS9qtSI4d-LqB-tm_vI8Fkhcx8XggXoKoeulGNJao-e9RG4fv42CaTjXfYfw0klFISyEGm0Uwo9RQsEkYD9QQc6_H9T5-GJiuw-zcMHHpy43Ws1qQhe3ma-7WQZvjqvHY_9uhSJk-xYyO9ae9i72V_i3yKAvTlUOThGAlyO-1diYpunGZuV0DJm_DPzstQgiQ2bL1Z-15vrTRKjH1euS_rojj7hlEdqwbKgNsKKrLpCP6JHtVhWGfZC17F2f5Bt2usumV3_KVCJ-qAFnr70_w9s9ou7ZjXxF2TNNci2cwFtbNcHCY-HcptjAOKHRM9D88IfR4QMyAv-9CT_rY26S2629HoguejZayBrT8W6WZhZLkUmq_uh5eE8eqSrSjhMorCTfXxIkqNP1O06jxa89VIot9G9Ua2xxYTZLjFcnLSQ1CHp67BHgvoFku3LKqOT6p-Cdj8nUlTHHP8urSfi3FsDeOtX-ZmgDkHqm_U3kfgxUMgOhywx_tyTH8yh93jKEsecq8nDRo8oEs0dOEUwoG8xElj_PR6Z0sI0fLj3wVMQT01V4G94i6uKrFFwgpIpMwL5BTXc8Nv3fM4QNrPNT1-AWtWrw_gZgC69GsKjqrpOHGvjfQtrTzkeS-GvEuzc0Hx_AgkngGzT0shaMH_5b06US7PlrTd4VWL3-OLuSIVPlWsVc34buVerViu6xFm1n57l"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "amaru",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-09508a10-cce4-463f-a1b5-6feb8e6229db",
+                        "name": "load_skill",
+                        "response": {
+                          "skill_name": "whatsapp-formatting",
+                          "instructions": "# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.\n\n---\n\nname: whatsapp-formatting\ndescription: Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n\n---\n\n# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.\n\n---\n\nname: whatsapp-formatting\ndescription: Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n\n---\n\n# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Correction Examples\n\n**Input:**\n\n```\nPara el plan del **Nevado del Ruiz (Murillo)**, que es el segundo.\nbullet **Duracion:** 2 dias y 1 noche.\nbullet **Precio:** Desde $385.000.\n```\n\n**Output:**\n\n```\nPara el plan del *Nevado del Ruiz (Murillo)*, que es el segundo.\n- *Duracion:* 2 dias y 1 noche.\n- *Precio:* Desde $385.000.\n```\n\n---\n\n**Input:**\n\n```\n## Fechas programadas\nbullet **Mayo:** 19 al 22\nbullet **Junio:** 26 al 29\n```\n\n**Output:**\n\n```\n*Fechas programadas*\n- *Mayo:* 19 al 22\n- *Junio:* 26 al 29\n```\n\n---\n\n**Input:**\n\n```\nPuedes ver mas info en [nuestro sitio](https://ejemplo.com/plan)\n```\n\n**Output:**\n\n```\nPuedes ver mas info en nuestro sitio: https://ejemplo.com/plan\n```\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.",
+                          "frontmatter": {
+                            "name": "whatsapp-formatting",
+                            "description": "Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.",
+                            "license": null,
+                            "compatibility": null,
+                            "allowed_tools": null,
+                            "metadata": {}
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              }
+            ]
+          },
+          "creation_timestamp": 1779949550.6077702
+        }
+      ],
+      "session_input": {
+        "app_name": "amaru",
+        "user_id": "user"
+      },
+      "creation_timestamp": 1779949577.1866481
+    }
+  ],
+  "creation_timestamp": 1779949573.1890628
+}

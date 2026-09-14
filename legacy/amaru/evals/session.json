@@ -1,0 +1,2175 @@
+{
+  "id": "bbd96d75-91d3-4967-8c76-2729854da36c",
+  "appName": "amaru",
+  "userId": "user",
+  "state": {
+    "__session_metadata__": {
+      "displayName": "Hola!"
+    },
+    "bant_result": {
+      "interest_level": "High",
+      "budget_status": "NotMentioned",
+      "purchase_urgency": "ShortTerm",
+      "has_decision_authority": true,
+      "explicit_human_request": false,
+      "plan_and_date_confirmed": false
+    },
+    "_adk_activated_skill_amaru": [
+      "whatsapp-formatting"
+    ]
+  },
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Hola!"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "1f011308-2dfe-4a43-9ccb-f7108a3f3cd8",
+      "timestamp": 1780985098.7156081
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"Low\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"Uncertain\",\n  \"has_decision_authority\": false,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 952,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 952
+          }
+        ],
+        "thoughtsTokenCount": 241,
+        "totalTokenCount": 1264,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -0.4831501060808209,
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "Low",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "Uncertain",
+            "has_decision_authority": false,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "8f5f174d-a5ba-418d-83b9-0902f05b0a59",
+      "timestamp": 1780985098.727059
+    },
+    {
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 0,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "Low",
+            "points": 0
+          },
+          "purchase_urgency": {
+            "value": "Uncertain",
+            "points": 0
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": false,
+            "points": 0
+          }
+        },
+        "bant": {
+          "interest_level": "Low",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "Uncertain",
+          "has_decision_authority": false,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "309d9b14-3355-410b-8dab-67c4a2236c0b",
+      "timestamp": 1780985103.092345
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-4c35fe47-be41-4313-bdf3-a869a5baef7e",
+              "args": {},
+              "name": "list_skills"
+            },
+            "thoughtSignature": "AY89a18Q_ecqya85Vs945MJHcnEOmzMslFJOid8s3eSnaAq7Wy8P9X6ORqehCvbIa3ZCR3ETsUZsfTmzIkffVhCH2PGinGSt0-YlQwntwDfs20jziGMY6c5OJMjMzbpIfaGByUFT2PPD5pe11xQJsnhjdDf5OejzRtnJhTw_TAQatieytS4KCyiKGT3qjIJ2qDoqsHj6RLoEuEj4qStWtO4Se-L4jeWee8G2NBduyeVQAom9JWv0nk2vmIBobMKERdCZmeXYcjnNxKc3ILnkblXMcn9aVVnyrP72WtyXzu4KS0AGbXHnapvJrEYj8NnXQykZafnFta5zzFikKL6DF-WGH_A8zWfrI9BQPvvb4h-Xds7jZeCM-NioAJCDnUmweI1TTyaWTuedB_5lz7va3V-g2EB6XCI8BzK5llbIfU3ckzXfSdfkgDLB-haqsNYkveaRrVLGqPcWdb3uqQ0_UIgu0_JeA3cv5go6RGkFyK5sBx5OBT9vg5VNGTdnnkAj7z09wGKbGW23JBaixi0Hy1oFRgpwtYZvP_mR464Mnb86daJhf_xT-fvjPNZBl4Qaibe1djNp1HtL7wEDxINsejoeqIh-EbvUasYhStoKLybFtjajYutuYJlLBSdtdLD1GuvN0CG5HgdhAbLZBiUElhgqFcfGo1XQ0v62LUQD2CzjtQKR4d8qd3z5FQ0AoiwbKm24d7bmuW_FoU86D5O3RH6yZWb7vWfnhVZRx4H3b1B8jrEQif-irxVRUSXvRPofv7RTpBSIMtz71j0dULnS9Mt_Z0y-pslRKidkUdhrY5Bd0-JiYMcA9M4OUxA5sgwtZrc3DeXjUPgq38xFvOREQ_5VQkl0yWMh-FdY7VALj8cDP0tYUC-FUnkr6RZYUdgawFIQyYc8s-7EY5eH4UeTxhelj1liktdR7bNHOCLuZ4ZbklPU-eVNG4r1TJyxY100yYnh3CjHdvs_dQVNSDIWsUAyRl-qImQ8Ucygtx_EqDHOEN9G3bBe-QF63dELLHvsAkfsUCM2VXm1qhx4QW98db8a1PAut2oWwQrEGXYLldSLsMbcv5gnEvpNJWNZJ_CPSAXiquB8Se7jXsEQMmpuBuA6IZi7rAkFWWtyRvH6HNtkDor-qXBSDnuz9yOBaiGLnj_CnfWO64S9hIXhVuCiGF6l4mIS6eiE4VClWXIlejEeNXWsj4XUiYWnw8H1z9e9R9VuoS_fxUo61lRO466iYl0n6eo1XU5KQoMwOFISODMJksBegjctI68G5XoBmeZynAVOylbgmUkW--73DGHC6C4SN0fGCuGcPbWw0Fpn3_hm-eWj9qeycF3xboFXCBzYfj7Z-4Ve4g=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 10,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 10
+          }
+        ],
+        "promptTokenCount": 3909,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3909
+          }
+        ],
+        "thoughtsTokenCount": 251,
+        "totalTokenCount": 4170,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "2ff1314c-780e-4b2a-8fd8-9f584a145dab",
+      "timestamp": 1780985103.111109
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-4c35fe47-be41-4313-bdf3-a869a5baef7e",
+              "name": "list_skills",
+              "response": {
+                "result": "<available_skills>\n<skill>\n<name>\nwhatsapp-formatting\n</name>\n<description>\nFormat text messages for WhatsApp&#x27;s native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n</description>\n</skill>\n</available_skills>"
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "7e2703c8-e4df-44a9-8bb8-191364df8d10",
+      "timestamp": 1780985107.7642372
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-09341b4c-63f3-4160-afe4-c7dd40e77d82",
+              "args": {
+                "skill_name": "whatsapp-formatting"
+              },
+              "name": "load_skill"
+            },
+            "thoughtSignature": "Cn8Bjz1rXw3fd1MzBicRKuXKGtXohSUKmZLfMcweyEa3x1R3agUDrwH7QpTJRAgopuuBGCk6hjCAkSjX0K_1MOFscnJbguh-_kfeQed_jo8pa7UXqwG3dS1OrBDt-aJ6BbhAYV3VcTtlyzumTl5jPLzhSAXNJ3BnqjeeivYG60QZ"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 13,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 13
+          }
+        ],
+        "promptTokenCount": 3676,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3676
+          }
+        ],
+        "thoughtsTokenCount": 28,
+        "totalTokenCount": 3717,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -0.5608572958164385,
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "b57ef694-269b-47c5-9b18-72b2da303c97",
+      "timestamp": 1780985107.779665
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-09341b4c-63f3-4160-afe4-c7dd40e77d82",
+              "name": "load_skill",
+              "response": {
+                "skill_name": "whatsapp-formatting",
+                "instructions": "# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.\n\n---\n\nname: whatsapp-formatting\ndescription: Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n\n---\n\n# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.\n\n---\n\nname: whatsapp-formatting\ndescription: Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.\n\n---\n\n# WhatsApp Message Formatting\n\nFormat and correct messages so they render correctly in WhatsApp's native text renderer (NOT markdown, NOT HTML).\n\n## Supported Formatting\n\n| Style         | Syntax                           | Example     |\n| ------------- | -------------------------------- | ----------- |\n| Bold          | `*text*` (single asterisk)       | _negrita_   |\n| Italic        | `_text_` (single underscore)     | _cursiva_   |\n| Strikethrough | `~text~` (single tilde)          | ~tachado~   |\n| Bullet list   | `- item` (hyphen + space)        | - elemento  |\n| Numbered list | `1. item` (number + dot + space) | 1. elemento |\n| Quote         | `> text` (greater-than + space)  | > cita      |\n\n## Prohibited Formats (must be corrected)\n\nThese do NOT render in WhatsApp and MUST be replaced:\n\n| Prohibited                    | Example               | Correction           |\n| ----------------------------- | --------------------- | -------------------- |\n| Double asterisk `**text**`    | **bold**              | _bold_               |\n| Triple asterisk `***text***`  | **_bold_**            | _bold_               |\n| Headings `# Title`            | ## Section            | _Section_            |\n| Markdown links `[text](url)`  | [site](https://x.com) | site: https://x.com  |\n| Bullet `bullet`               | bullet item           | - item               |\n| Markdown images `![alt](url)` | ![img](url)           | Remove entirely      |\n| Markdown tables `\\|col\\|`     | \\|a\\|b\\|              | Convert to list      |\n| Code blocks with language     | `python code`         | Plain text or remove |\n| HTML tags                     | `<b>text</b>`         | _text_               |\n\n## Structure Rules\n\n- Max 2 blocks: either 2 narrative blocks, or 1 narrative + 1 list.\n- Max 2-3 lines per block.\n- Max 1 emoji per block.\n- Max 2-3 key data points per message.\n- If content exceeds 4 total lines, summarize it.\n\n## Correction Examples\n\n**Input:**\n\n```\nPara el plan del **Nevado del Ruiz (Murillo)**, que es el segundo.\nbullet **Duracion:** 2 dias y 1 noche.\nbullet **Precio:** Desde $385.000.\n```\n\n**Output:**\n\n```\nPara el plan del *Nevado del Ruiz (Murillo)*, que es el segundo.\n- *Duracion:* 2 dias y 1 noche.\n- *Precio:* Desde $385.000.\n```\n\n---\n\n**Input:**\n\n```\n## Fechas programadas\nbullet **Mayo:** 19 al 22\nbullet **Junio:** 26 al 29\n```\n\n**Output:**\n\n```\n*Fechas programadas*\n- *Mayo:* 19 al 22\n- *Junio:* 26 al 29\n```\n\n---\n\n**Input:**\n\n```\nPuedes ver mas info en [nuestro sitio](https://ejemplo.com/plan)\n```\n\n**Output:**\n\n```\nPuedes ver mas info en nuestro sitio: https://ejemplo.com/plan\n```\n\n## Workflow\n\n1. Receive the original message.\n2. Detect violations: double asterisks, bullet bullets, headings, markdown links, HTML, tables, code blocks.\n3. Correct formatting using the rules above.\n4. Summarize if the message exceeds 4 lines.\n5. Return ONLY the corrected message, no explanations.",
+                "frontmatter": {
+                  "name": "whatsapp-formatting",
+                  "description": "Format text messages for WhatsApp's native rendering. Use when generating, correcting, or reviewing messages destined for WhatsApp, or when the user mentions WhatsApp formatting, WhatsApp messages, or asks to fix markdown for WhatsApp.",
+                  "license": null,
+                  "compatibility": null,
+                  "allowed_tools": null,
+                  "metadata": {}
+                }
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {
+          "_adk_activated_skill_amaru": [
+            "whatsapp-formatting"
+          ]
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "d4954625-0c3e-43e3-b0d7-6417ad5fb333",
+      "timestamp": 1780985111.240007
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️\nQué gusto saludarte, será un placer acompañarte a planear tu próximo destino.",
+            "thoughtSignature": "CosIAY89a18cycGaqEuwUfEig8lKPwn3XXGqwKgHK6OKVE2KTET4JYVwfSLPKMuLGiRgk808r12BpdltE2BNNwZq5H1v4BjNF850oNJISGweqw0tIECa9NgqBIucHGe__uSzPmK12ru7g4VgAW18U8KnHwIpU4qq3pgxe4l6ovFyWDU1quitkb-6RitJ4GM9Wp-yA3EzBr6TRYTG6_UY-lNsY7NAJrIZDrf4y3VT0tyzRx9XV8dBl7oHXomlBtDxJm1yCQLMILlyy-VVQAgLCemAElE9SHnAr3lGI6odTWHOA6J8dfYtkZLZMIy-zfgMjNjeXWdPfkTkII8Rpay67w2mslUEgN15uk8kwiI4BdR6n4m4dj8qQ9NBXFc8mpe7Ig4ZeKRjKmgiodWxkzriniPy2iGGgkeCKNTfeGvHNRwMpWV2cjdv5Txqp6wLzqF_GI1M22jCOxqI1TfoEFJMjrpEkt6xBRgTmS6ExFo_AvUOpoZ9fevx9Ywl-TGsJThbcMp0OIojdW_KDIir8m1jGR0mM5HOP9IpcOaswandbKP8kbdThIDNlV82Tyz7olIy4fU_6ynMs_p9xwmaBpIC8Ncm48OxJCPDNbZxDjeeOaE-o6GrZc6iTyYjMHZE3jmNyvawAPsR23jmZI3T5fg7Ilgc7mPR3dCgqFdoAZ3GfgmRDGaYvDrNRrk8eJJUZLbMPkcZ9H46RH834uGX3TCduQ4FHHj4L05c_p_oEdHthfIspZWJSTMePvRbbBoIC1JogsOltT4iCT9dIHvqFMs7Pty3MwzLYDBw7kXYh7SDLFJhcAhJs_VJ81l2IUQ9K2-p3OmfToz4ZOOOhCZUxGppQhGSFRM0k1-QMrXvBurz-1BDSb_orZR8eIQt1kA3jM6k8SBk4atlwEWZb2MfilqE-oYNYEir4z55ArYgxbqL35VTglL82D5I8h_cPX7CDsoMyoT0hGeNyKsnQTJZl6jBVhVXpwxbGAJgQL6jxptc_FyaKkASr-Hi2c1a5bjX23XCU3XlZ-2x-EjLgG73tLRDzt7q2lHwncKHw7z6vX9AKU_ulZORbTrkPZnAmPyEaPc7xNO_JCszDVkJ9GCXm6nOHl4KhzxnYFRpV8u9NhxGOuVERsPLbIpIREapqtV8aWcnecrSVLbxB4yejVKQWHB8QF6oLSS8QIYFR5lQnBrq5nzaRvioYFB3bohcNmSaFkzD_vpWEty0YGrBBt84Y21ERvWXqdeIraFzZFy3Zjhu7rDCkSm9dEHBqIWEFZTXmUgvtE9FH0_IhDyc9dBxefMOnrU4h9c1aVrbAuqgyc9y7sy33v28-6c95xSkSL24xexU34eZXBAEPNlgOqBdNFBZY-KNQJjscAB6wMn5Vgbg"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 35,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 35
+          }
+        ],
+        "promptTokenCount": 5835,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 5835
+          }
+        ],
+        "thoughtsTokenCount": 255,
+        "totalTokenCount": 6125,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -4.548167615433617,
+      "invocationId": "e-968c3fff-954a-46e1-bc08-1e261cd281e5",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "01e08abb-33a2-4c78-be36-db82e65c7da4",
+      "timestamp": 1780985111.2523499
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "que planes hay para tierra caliente_"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "08a8839a-b225-4122-acee-05e79a24357d",
+      "timestamp": 1780985324.5986838
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"Medium\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"Uncertain\",\n  \"has_decision_authority\": false,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 3589,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3589
+          }
+        ],
+        "thoughtsTokenCount": 167,
+        "totalTokenCount": 3827,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -0.543106455198476,
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "Medium",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "Uncertain",
+            "has_decision_authority": false,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "bddec2e8-4a8f-4e9e-b403-2064bb2c0941",
+      "timestamp": 1780985324.609136
+    },
+    {
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 15,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "Medium",
+            "points": 15
+          },
+          "purchase_urgency": {
+            "value": "Uncertain",
+            "points": 0
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": false,
+            "points": 0
+          }
+        },
+        "bant": {
+          "interest_level": "Medium",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "Uncertain",
+          "has_decision_authority": false,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "2d7f16fc-f515-4b7d-ae11-821d239dfed0",
+      "timestamp": 1780985327.506239
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-5c16f595-27d3-42c1-914b-f4f2630606d2",
+              "args": {
+                "query": "planes en tierra caliente",
+                "matchCount": 5
+              },
+              "name": "search_context"
+            },
+            "thoughtSignature": "AY89a18TxavO5lryiuvXlCbvsVmTpOjKTUYt_mpK0rvgk04KqvFiQGIxgQ7d7XuJpJrssmeoZyNIpcIQrJv4QyezXarQExOVGCMhR6bkwOvswC5p4RyGtcGDfEI54nf30qv2DspwjfOrLgFzjkVcagZbdh_4O6zs5aiyeBRYqc_zeXJfDGFViy4GVqyv34Hl2Luug6BoCwODeg-6owiGInaDaZixcGABWliaDSpyiLu_zpeTOdbqUiWc1-DwC1229KfcHm11roc4bOmWagdL-AG8Q7WOPwe5gcJjwTfg6qVk7APeQ0QFD5pSg9zkWqQOdmSRclUA9mwpTsJEaEEp2nFK2zyeMd3rKyTbcbyUj3hr2hjOUPIyV7AAy1ef2d2gnwBEwVtSGsAFvhB6gGlaybzX9ztEUxLSfMKVBHEdUyBT21W6pyJCjmKXenI5Bvj65vdN4nhbpvqdkCzEl0dTJ_Mk7aDgfix36SZSMK2cQ2TsYjoL1I5Z_5y8Njyt4sZndnAvJD94brJRyK7obDL6quH8sru5LOyLRlGgW5Hos_mV5kxsSVymMxAHr8_1xu3hbK9DOW1k9Ek4NmQ8y96dafZOiyJlzkR05YiUyzy5WLBtDOtEbjQDWc6f0FCqPLSLz_wwcajnC7QC0yV9p4jEACkzpdJdU8VV3PfVNDijmVHxkh7PcP1ve_gB7YtJwYXiy4JWt5Tux3W64sPfcsxMmjKPft2wt4-U7WJtUkgihc7FZmRoQPaVXDKAPKuIxrbV7OWRIFunV9SXIqDSn3QytYa-isIJ7I_OOS6Y3v5CEs918HvP5h8rI170h_tJMBxp5gPzC-GI5xtBcGsL3F68XiAsQ_ML4BuabhJx1yyZ3ojqmAQ="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 24,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 24
+          }
+        ],
+        "promptTokenCount": 6298,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 6298
+          }
+        ],
+        "thoughtsTokenCount": 152,
+        "totalTokenCount": 6474,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "2a3ff133-1bcf-449d-8601-13c6fbd3d6a1",
+      "timestamp": 1780985327.5235178
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-5c16f595-27d3-42c1-914b-f4f2630606d2",
+              "name": "search_context",
+              "response": {
+                "content": "Result 1\nContent: - **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n\nResult 2\nContent: **PLAN**: Parapente en Guatavita\n**CATEGORÍA**: Aventura / Aire\n**DURACIÓN**: 1 Día\n**DESCRIPCIÓN**: Experiencia de vuelo en parapente biplaza sobre el Embalse de Tominé y la sabana de Bogotá. Acompañado por pilotos profesionales, permite disfrutar de vistas panorámicas de montañas y valles desde una perspectiva única. Es una actividad apta para principiantes que combina la sensación de libertad con la contemplación de la naturaleza.\n**UBICACIÓN**: Guatavita, Cundinamarca (aproximadamente a una hora y media de Bogotá).\n**ALTURA**: 2.700 MSNM\n**DIFICULTAD**: 1/5 Principiante\n**TIPO**: Parapente\n**ITINERARIO**: \n- Encuentro en el punto de la zona de vuelo.\n- Verificación de datos.\n- Charla técnica con instructor asignado.\n- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.\n\nResult 3\nContent: **PLAN**: Trekking por Supatá\n\n**CATEGORÍA**: Trekking y Aventura\n\n**DURACIÓN**: 1 Día\n\n**DESCRIPCIÓN**: Embárcate en una aventura única con una ruta de trekking en Supatá, un destino ideal para los amantes del senderismo y la naturaleza. Descubre senderos rodeados de exuberante vegetación, cascadas cristalinas y vistas panorámicas de la cordillera, mientras te sumerges en un entorno natural lleno de biodiversidad y aire puro. Supatá es un tesoro escondido en Cundinamarca, perfecto para quienes buscan una escapada de aventura y conexión con la naturaleza. Su clima templado y su geografía montañosa lo convierten en un destino ideal para el ecoturismo. Los atractivos principales incluyen senderismo en la montaña, cascadas escondidas, vistas panorámicas de los Andes y actividades adicionales como canyoning y torrentismo.\n\n**UBICACIÓN**: Supatá, Cundinamarca (a aproximadamente 2 horas de Bogotá).\n\n**ALTURA**: 1.798 MSNM\n\n**DIFICULTAD**: 3/5 Intermedia\n\n**TIPO**: Trekking, Canyoning y Torrentismo\n\nResult 4\nContent: **PLAN:** Pasadía en Tobia: Aventura y Naturaleza en Cundinamarca\n\n**CATEGORÍA:** Pasadía / Aventura\n\n**DURACIÓN:** 1 Día\n\n**DESCRIPCIÓN:** Tobia es conocido como la capital del turismo de aventura en Cundinamarca. Es un destino ideal para quienes buscan adrenalina y contacto con la naturaleza a pocas horas de Bogotá. Ofrece una combinación de actividades extremas, ríos cristalinos y un clima cálido. Entre sus atractivos principales se encuentran el rafting en el río Negro, torrentismo en cascadas de 35 metros, canopy, puentes colgantes, senderismo por antiguas carrileras de tren y pozos naturales.\n\n**UBICACIÓN:** Tobia, Cundinamarca (Provincia de Gualivá), aproximadamente a dos horas de Bogotá.\n\n**ALTURA:** 750 MSNM\n\n**DIFICULTAD:** 2/5 Principiante\n\n**TIPO:** Rafting, Torrentismo y Senderismo\n\nResult 5\nContent: - **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A",
+                "artifact": [
+                  {
+                    "id": "a6ff33cb-8dce-445f-a4ee-3d2fe129a1dc",
+                    "content": "- **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "5bdeac2b-95cb-49f0-a87d-3c4cf2880a22",
+                    "content": "**PLAN**: Parapente en Guatavita\n**CATEGORÍA**: Aventura / Aire\n**DURACIÓN**: 1 Día\n**DESCRIPCIÓN**: Experiencia de vuelo en parapente biplaza sobre el Embalse de Tominé y la sabana de Bogotá. Acompañado por pilotos profesionales, permite disfrutar de vistas panorámicas de montañas y valles desde una perspectiva única. Es una actividad apta para principiantes que combina la sensación de libertad con la contemplación de la naturaleza.\n**UBICACIÓN**: Guatavita, Cundinamarca (aproximadamente a una hora y media de Bogotá).\n**ALTURA**: 2.700 MSNM\n**DIFICULTAD**: 1/5 Principiante\n**TIPO**: Parapente\n**ITINERARIO**: \n- Encuentro en el punto de la zona de vuelo.\n- Verificación de datos.\n- Charla técnica con instructor asignado.\n- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "chunk_count": 4,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "05034d82-4bb6-48ed-9ff3-f2ac9f4632a4"
+                    }
+                  },
+                  {
+                    "id": "e577122d-4646-4913-b308-5f507317e80b",
+                    "content": "**PLAN**: Trekking por Supatá\n\n**CATEGORÍA**: Trekking y Aventura\n\n**DURACIÓN**: 1 Día\n\n**DESCRIPCIÓN**: Embárcate en una aventura única con una ruta de trekking en Supatá, un destino ideal para los amantes del senderismo y la naturaleza. Descubre senderos rodeados de exuberante vegetación, cascadas cristalinas y vistas panorámicas de la cordillera, mientras te sumerges en un entorno natural lleno de biodiversidad y aire puro. Supatá es un tesoro escondido en Cundinamarca, perfecto para quienes buscan una escapada de aventura y conexión con la naturaleza. Su clima templado y su geografía montañosa lo convierten en un destino ideal para el ecoturismo. Los atractivos principales incluyen senderismo en la montaña, cascadas escondidas, vistas panorámicas de los Andes y actividades adicionales como canyoning y torrentismo.\n\n**UBICACIÓN**: Supatá, Cundinamarca (a aproximadamente 2 horas de Bogotá).\n\n**ALTURA**: 1.798 MSNM\n\n**DIFICULTAD**: 3/5 Intermedia\n\n**TIPO**: Trekking, Canyoning y Torrentismo",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/trekking-por-supata/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/trekking-por-supata/",
+                      "chunk_count": 6,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "ea39fb51-e27c-471b-ae33-246e3e617f8d"
+                    }
+                  },
+                  {
+                    "id": "29a23631-56a1-49a3-bc99-4b0549016d6a",
+                    "content": "**PLAN:** Pasadía en Tobia: Aventura y Naturaleza en Cundinamarca\n\n**CATEGORÍA:** Pasadía / Aventura\n\n**DURACIÓN:** 1 Día\n\n**DESCRIPCIÓN:** Tobia es conocido como la capital del turismo de aventura en Cundinamarca. Es un destino ideal para quienes buscan adrenalina y contacto con la naturaleza a pocas horas de Bogotá. Ofrece una combinación de actividades extremas, ríos cristalinos y un clima cálido. Entre sus atractivos principales se encuentran el rafting en el río Negro, torrentismo en cascadas de 35 metros, canopy, puentes colgantes, senderismo por antiguas carrileras de tren y pozos naturales.\n\n**UBICACIÓN:** Tobia, Cundinamarca (Provincia de Gualivá), aproximadamente a dos horas de Bogotá.\n\n**ALTURA:** 750 MSNM\n\n**DIFICULTAD:** 2/5 Principiante\n\n**TIPO:** Rafting, Torrentismo y Senderismo",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/pasadia-en-tobia/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/pasadia-en-tobia/",
+                      "chunk_count": 6,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "cf6f64e5-a9be-4df0-ac24-fa4e2d3e14f2"
+                    }
+                  },
+                  {
+                    "id": "0dd5653e-d20e-4b5e-ad8c-c7e030f910d7",
+                    "content": "- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 2,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "5c617ca1-bbeb-441e-9265-8832dc08b0bc",
+      "timestamp": 1780985338.026067
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-8b06b4a8-4de3-4e39-85df-b71ca8867ec4",
+              "args": {
+                "file_path": "scripts/format.py",
+                "skill_name": "whatsapp-formatting",
+                "args": {
+                  "text": "Para disfrutar de un clima más cálido y llenarte de buena energía, te tengo un par de opciones increíbles:\n\n- **Pasadía en Tobia:** Aventura total con clima cálido. Puedes hacer rafting en el río Negro, torrentismo y canopy. ¡Perfecto para un día de adrenalina!\n- **Paracaidismo en Flandes:** Salto tándem a más de 10.000 pies con vistas al río Magdalena. Flandes tiene un clima ideal todo el año.\n\n¿Qué estilo te llama más la atención para contarte los detalles?"
+                }
+              },
+              "name": "run_skill_script"
+            },
+            "thoughtSignature": "AY89a1_FfomKkNXTAPKBLNZ1bgfoTxN8yd6mE0yPa_9rFszliTMQuwSIIi-E8yBxJHFIsQ8gFYnaieRzc_iWov4SemyuAwxPqhWw4PSmaSXTI3t2RYxaKZ1dpT8CnLnSbyo1CbMGGv1RP_AEeBqFadpRYwGXY9M894m4hQlGM0jAP8XYn8TVBj5kCdNuuifRsxsf31IwXB-b-pnsVBNf9u7tGA02Zz5ZkSrZBnKgq9P850mTP0CTtCfH000Sfw0Ao4nsnPyD161TBwsZI_Uyo72HXc-4XkWaUs5_j_PgHr4DL9OY3-nbgJufINc0P_q8dF_lPEVXeTUjahHenbC5cWb8iEaAKE0hv2K8lCJF3jwB9ojZUgMRIuOlrYVhc4OTtZ67L6oFer2xi1sVId2c11ktdq8FFAEu1H4VZ6wo_ftcE-Dj3IooOCFIzQNvnK3b77SF_eu3xVnHDxxmrBl3MiTI4u6mwgYGTOK2waYzpgbKWdhMMIo8D_xdJPx4hZSmAjo3yJ1g8tDPUTJFE9w28T7E9KHRrsCX4HtkY8sUBRlSytDXvR83o6alcfwecw0lvheB_Hwa5ayXDxLnxp8cBwYPZTcVhPb-McDgP-1o9LFQF6LbzJcOLixgLnZZrkmVZDGwkJGQL9fwcBkfCggmrvoa5MsqFcXqNYpasotuMv5sCSb9EW4rKyPryS10u6hgDVpP5sTdAVJK2DI8GM3elVmt1i7qBvHXWdGPIjkcsPoXPxVKQ3Nm5zt4HGRhZIRrjZPkOhs0PHcxKBu8FXD1bWUk6ydnpFe3nuhkf5njv6C6Ga1wLh7nqJkQGFNtabjVrFBkgC70H068_UX0ox7w-SsGGCYbm_S8C4hAVkHe9KKkjR0Z8N4y26jj2IajnQ6o3LAxSeFQDUe3EkIoT0wGT0Ze57bpjElh3isqe7HPXAs1odvslV-ubdm0mv6HPzYnJzGnMDmFmtHhkquV2JV7wMBy02ZdQHyURyozZ5pbwLIeBYPXYsRwn4Dg6ElGGBzqw-mfqjr9wovUs0dVs-6aO7kfVTyVb8TQGr1IjsH3ageVQqbdMr3v1rkNj4ZG2OBHveOnloclk5nJgUjfS4Fzht6JdJFWa1qbLgYVEpv7pOasJnslaiDhn5WOnpCEIMPYtK66MbzLs8xlbRgyZUgPkLz_4igmc5dewqcm-rjkZep1eKeqWkHmPjDbKhHMoEzSO06sOHSLwgtuX6t5cYVhf9dh2lqMU7XC3Q2dMo5xtMEF19y90EqaKTfbeOm-lbXqot3Eb-ENyyGDbCThMOIpzs7hhOtGVD3wIKftkXXpq-ZFonXbFtEMy5B2SUzTjDYVHcNVQ_Wvrf7oGp1OW62W2pjX59qBkkRovAO_vT_8g4vNLTylXsAoQbRLvFCj_F7WMN3RO_oG5qSVDmKyQDTzsdG8SKcS61hXzUMeqCzVcG53Lmi6P8SqXMSNI9Tzlcz2mnhJEmPxvh2SQBbPKrHWmw13KW5frEPnD0OqQ8FDABylEvSa"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3850
+          }
+        ],
+        "cachedContentTokenCount": 3850,
+        "candidatesTokenCount": 166,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 166
+          }
+        ],
+        "promptTokenCount": 9885,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 9885
+          }
+        ],
+        "thoughtsTokenCount": 304,
+        "totalTokenCount": 10355,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "0e7a095f-711f-4617-853c-6022c76fd4ff",
+      "timestamp": 1780985338.0468102
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-8b06b4a8-4de3-4e39-85df-b71ca8867ec4",
+              "name": "run_skill_script",
+              "response": {
+                "error": "Script 'scripts/format.py' not found in skill 'whatsapp-formatting'.",
+                "error_code": "SCRIPT_NOT_FOUND"
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "e1d4239a-9f53-4e02-ac76-546b643caaed",
+      "timestamp": 1780985344.8102348
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "Para disfrutar del clima cálido y salir de la rutina, tenemos dos planes de aventura buenísimos:\n\n- *Pasadía en Tobia:* Clima cálido con mucha adrenalina (rafting, torrentismo y canopy).\n- *Paracaidismo en Flandes:* Salto a más de 10.000 pies de altura con el clima ideal del Tolima.\n\n¿Te suena más un día de río y cascadas en Tobia, o saltar desde un avión en Flandes?",
+            "thoughtSignature": "CvAFAY89a18iWmPg5oDr7mrGv0dQxkuS5MAkcnUzzhKAyKTvAIDew3X14soFZytooXd-zwDa0pMcMo_cr099IjxQFSeCzcvpT6owYiaz1HpH5YVFWtLk9Y3V8yI0dllWRI5rjKNfzxmMPIda8X13iny9i-EMcMLmdVQWqbYD5hLe41icjR7Qm7_QmFjwmO1QQEagz_Wwc9ZjnfJ8aaeF2KqVMyGe8fjM1-Zd-V1IDLP_GHYEg4vf38e9EDqpQZTGqB258RnLOR_CUtO2xwmYXxZV1aFYp2oyj5i4b_ddmbuGbZMQhzVcbr_5NQBBm9yEYWa1qdrwJlGBMw43hC3R8buqhLHWXzkpBOhE4ZAaNDOQD9Y9g3mDIDQ1dV4Bn27CX4IJsjqy_42NzwPePwzdLjVbdquYH_GDjZ9KXCR4NHTBy6IdVkD1t-EMASFn3oHXt3zoIma8ku5FuaC044QYM9P9vEzkKIkQmD8R3rHEPJNSIBJfHXqM_q8oWo1DFbenq8_EMy3psjXXnRK0IisMdWhBovk_IbDxS1TPoX0cwg1jld28fDecoKgBAhSXyp30z23vd3GXAhuYqMIE-O9G86-6KFneGSSfzM-qjKcnBeawgbwjPurpsWMW46Thqb-XkCEiO2WKgRyaOdUTOIJC-UJOHhkdnojnAsBUVbM7YahoaIZbJZEBGnNocQORwN2NtPlaZKokmKYgSMxM8HBRr5B60uNR_3dDEY-jdc-HHAH0nDPpVC02j9agix16bwYP2Zjrmmox1yB_2dX2wd8UnaoSLC10Zg8hLzp7SpTv3j-2Cl0Ah2dhGn-WYI16guUHBZMG8xHR5LQEWiNdkJbM3wCl2-EBjkN8fo3u1jueryaawuvzDf19leht5EH_FvqcU2CqWLwKtC1x59jN5AFNL7P9waI_LyCO4Be8Wb1Bfwii3qblMzsk0JggFOUnBsmnnYYWo5qtviKZWw9BINAhEKqStiyiOMMtXnR1jg4bWdzSy0s="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 110,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 110
+          }
+        ],
+        "promptTokenCount": 9561,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 9561
+          }
+        ],
+        "thoughtsTokenCount": 202,
+        "totalTokenCount": 9873,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -1.1540773023552284,
+      "invocationId": "e-f56100d6-91a7-44ea-9265-169d17086c47",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "78321950-a6e4-4c08-a1a0-615693098a86",
+      "timestamp": 1780985344.826207
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "ok me gusta Flandes"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-0d7db9d9-6f81-4584-9f89-49cbc0f029a2",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "8fb12168-b2c1-427f-85a0-556ccf7033ff",
+      "timestamp": 1780985369.633333
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"High\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"Uncertain\",\n  \"has_decision_authority\": false,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 7828,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 7828
+          }
+        ],
+        "thoughtsTokenCount": 275,
+        "totalTokenCount": 8174,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -1.6256815950635453,
+      "invocationId": "e-0d7db9d9-6f81-4584-9f89-49cbc0f029a2",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "High",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "Uncertain",
+            "has_decision_authority": false,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "8c241de3-da34-4b5a-bdfb-8af19afcb863",
+      "timestamp": 1780985369.64116
+    },
+    {
+      "invocationId": "e-0d7db9d9-6f81-4584-9f89-49cbc0f029a2",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 30,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "High",
+            "points": 30
+          },
+          "purchase_urgency": {
+            "value": "Uncertain",
+            "points": 0
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": false,
+            "points": 0
+          }
+        },
+        "bant": {
+          "interest_level": "High",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "Uncertain",
+          "has_decision_authority": false,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "484444dc-427b-43f8-99ea-c2a501547481",
+      "timestamp": 1780985373.1075351
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-6ff8d054-af08-4cda-b086-0cb5298c46fa",
+              "args": {
+                "query": "precio Paracaidismo en Flandes",
+                "matchCount": 4
+              },
+              "name": "search_context"
+            },
+            "thoughtSignature": "AY89a1_ny6T1-8TI4ynFhphMo38TAd96lLZE0YYcB-oCEWrJLkNdXfupbDlpxsO2whI6ON7vfogDMt-_wLEIglPfq0kZkNOoZWR8NaSea18NR9ACNF-L69_KxAnswYz4V0nYSOlBiFyLJEKeltXq_7NlAjS_v-BriczjPyWowTwTD_rrRaz3mBltMk1l1kyfKplp7ryjpxFJia8zf7maoxb4HbI2Cp34Xw8ZYHsU0zhuszUcsktsqRaSl6IaE9E0AJPyVdkrBTDs5lHRH4csBMbTiD21mIDG2zgGNW4SRns8BnTYAWnc3nNfl2YMpu_sinSRukXwUuVVP8r-aYBsxJFQiPcbUcEN2kcYF9RCglNoZ5v-n0iZFy6-PItlejNtcCqhRFhGw6QnnJPbYxkJArkwSzTzM7qBlgIF3cOegYgpplOYw3VdnTrf21ZuNqYoXHww4o7u-wrbvf300ieIEjeOJLbClFhVHol-gcDmCpgXdoc5q0FfwDC6XARnjiJCgUQvCSXr6g8HEvtEMytQQHNZ3sjGok0iM5MwmyX6Jeb_zXj0NLj_4kn4NTH3jJ1qZtBK7WD2clhqYPYf5GS7Kzeeoz0iBcq5wRHhZ47Q59LGoS_SW9J56F5XrfWUZzek2TfQD9fqNszgN3m5xveExtFaoMiQMuXGn7kmeu1aTUWJZOGYUIe4uf5qqmTY1qcl_jbMlrXyuatxECXlLNG4eNVIYe2uqGp8Nch0cM3-4wv-mqBshpJ2UQJ1ZXMv8LzDXfRWPjetO881FVieWNUQ_DMqbTUmyzt8ls0-EBy_sRsj0v1bs1ghNxXtWsZhOg5_V9CAKk0p9JhtNVKFiJeLbXTus6wgTpseXPFBVDE0FgZpdi6SO_T3Pn1C1Y-zLfJToX3VHZf9au7RU7zJajD0ruaAcQYjclAeCbELUI5VXxnJQZBmb_kKI4_sbz_jXYa-Qg98FFszuZYEsWFLgByVvLM-70pJsgQ0rXC2WZFgY90Z8f-QGQfFfvcf3TPQM2T-hrfOfqVgUNfs9MiU6K7yNM2gTzlaSyGUw10SWspcunafKNgoCx-pxVNwzLLR3QWkkyDXxQjs0FbCD3wb6FoKwMHC5eNow85tZxeiOIuvB542p9hfakI-KcxuyRPnPvReWqPGT4rF6RB2Enmv6pWNbwNOx8mygkL_wIOophKTlRaTlduOS30SDlOTS0svoQAmx1MLi0wBd4sIyF8uuio0NGmZ4_i20oBY4f-yFw=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3842
+          }
+        ],
+        "cachedContentTokenCount": 3842,
+        "candidatesTokenCount": 29,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 29
+          }
+        ],
+        "promptTokenCount": 10113,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 10113
+          }
+        ],
+        "thoughtsTokenCount": 256,
+        "totalTokenCount": 10398,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-0d7db9d9-6f81-4584-9f89-49cbc0f029a2",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "f49c955f-535f-422d-af4a-89c51b25df80",
+      "timestamp": 1780985373.123936
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-6ff8d054-af08-4cda-b086-0cb5298c46fa",
+              "name": "search_context",
+              "response": {
+                "content": "Result 1\nContent: - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n- **INCLUYE**: Salto tándem, vuelo controlado en paracaídas con instructor certificado, inducción y charla previa, seguro de asistencia médica, equipos certificados bajo estándares internacionales y acceso a instalaciones (sala de espera, baños y parqueadero).\n- **NO INCLUYE**: Traslados desde y hacia Ricaurte o Flandes, gastos personales, fotos, videos, hidratación y snacks.\n- **FECHAS**: Fechas abiertas (sujeto a validación de disponibilidad con un asesor).\n- **PRECIO + NOTA**: Desde 800.000. Se reserva con el 30% del valor total. Pagos con tarjeta a través de BOLD tienen un recargo del 6.5%.\n- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n\nResult 2\nContent: - **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n\nResult 3\nContent: - **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A\n\nResult 4\nContent: - Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.\n**NO INCLUYE**: Traslados desde y hacia el voladero, gastos personales, fotos y videos, hidratación y snacks.\n**FECHAS**: Fechas abiertas a partir de dos personas.\n**PRECIO + NOTA**: \n- Vuelo Meditación (15 min): $250.000 COP.\n- Vuelo Intermedio (20-25 min): $310.000 COP.\n- Vuelo Adrenalina (25 min con maniobras intensas): $370.000 COP.\n- Nota: Pagos con tarjeta mediante BOLD tienen un recargo del 6.5%. Se puede reservar con el 30% del valor. Servicios adicionales: Fotos/Video GoPro ($45.000) y Video 360 ($100.000).\n**PUNTO DE ENCUENTRO**: Zona de vuelo Laguna de Guatavita.\n**NOTA DE SEGURIDAD**: El itinerario puede modificarse dependiendo de las condiciones climáticas. Es obligatorio seguir las instrucciones del piloto y guías.",
+                "artifact": [
+                  {
+                    "id": "4f2a3a3d-0137-4b1b-95cb-c21e1076601f",
+                    "content": "- 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n- **INCLUYE**: Salto tándem, vuelo controlado en paracaídas con instructor certificado, inducción y charla previa, seguro de asistencia médica, equipos certificados bajo estándares internacionales y acceso a instalaciones (sala de espera, baños y parqueadero).\n- **NO INCLUYE**: Traslados desde y hacia Ricaurte o Flandes, gastos personales, fotos, videos, hidratación y snacks.\n- **FECHAS**: Fechas abiertas (sujeto a validación de disponibilidad con un asesor).\n- **PRECIO + NOTA**: Desde 800.000. Se reserva con el 30% del valor total. Pagos con tarjeta a través de BOLD tienen un recargo del 6.5%.\n- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 1,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "a6ff33cb-8dce-445f-a4ee-3d2fe129a1dc",
+                    "content": "- **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "0dd5653e-d20e-4b5e-ad8c-c7e030f910d7",
+                    "content": "- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 2,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "6bee96c8-e5fa-4c30-89ef-8aa17b7ca30f",
+                    "content": "- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.\n**NO INCLUYE**: Traslados desde y hacia el voladero, gastos personales, fotos y videos, hidratación y snacks.\n**FECHAS**: Fechas abiertas a partir de dos personas.\n**PRECIO + NOTA**: \n- Vuelo Meditación (15 min): $250.000 COP.\n- Vuelo Intermedio (20-25 min): $310.000 COP.\n- Vuelo Adrenalina (25 min con maniobras intensas): $370.000 COP.\n- Nota: Pagos con tarjeta mediante BOLD tienen un recargo del 6.5%. Se puede reservar con el 30% del valor. Servicios adicionales: Fotos/Video GoPro ($45.000) y Video 360 ($100.000).\n**PUNTO DE ENCUENTRO**: Zona de vuelo Laguna de Guatavita.\n**NOTA DE SEGURIDAD**: El itinerario puede modificarse dependiendo de las condiciones climáticas. Es obligatorio seguir las instrucciones del piloto y guías.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "chunk_count": 4,
+                      "chunk_index": 1,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "05034d82-4bb6-48ed-9ff3-f2ac9f4632a4"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-0d7db9d9-6f81-4584-9f89-49cbc0f029a2",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "103d10a7-582e-4345-b021-113fc704b74e",
+      "timestamp": 1780985380.412809
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "¡Excelente elección! Es una experiencia increíble y de adrenalina pura. Te comparto los datos principales del salto en Flandes:\n\n- *Duración:* 1 día.\n- *Nivel:* Principiante (es un salto tándem con instructor, así que no necesitas experiencia).\n- *Precio:* Desde $800.000.\n\n¿Te gustaría que te cuente cómo es el itinerario del día o prefieres ver qué incluye?",
+            "thoughtSignature": "CoUKAY89a1_SWk5rZH06XHoR5Cz1DXf2URS4uShOg6hdKdPU2SWJj9yGppF7i-PFN9J5yAUNS6BLZfHNmx7ReJ2lrjd4-SccXH5rvPSn0iH0UEBDITysI6KSvSzPOFWhX2pU1xoWXkH6TzyAhmqAf-QBanJyYbYDtJ7cnP_vql7wCyy3YF9a5gcvWGqWzSjH8xf5gEERUgvdfE12FJqGWG_lWfomn-vsLMvgnRaBQ2XSM-S52Z4iXkavcBsmK-QhAcojhSqGFzxS42vhxDcsYjE9UhgujhMb4gCLo427BGDauNZqiGX3OeCDe4A5W_hr2R16pSzy2CMr6L_XvNjlSVl8kCMryc6BrX2b-k6pbjx1JIZNgLhE0vR5T-x9izG4hUS_v5DjZn-BTTYzM_Eoya9oBL_QIrAJ3mNbVO_wYjEhmX234mKi9HBa7L8OTrQOzeHDvldPjsZqlGD_CiBH4BsXtImIO9o7EU9vnj6SMBUC4erJncVc93TnH-6eHYXuVHrY6s39Wr_XvwQzSupvJb8aTUE96xfC5F_x0v3zDr7hXGY7YrCiO4DK16e_Qar9RpfK_3LF6w5MUbAl8UM5seS2iHjW102eCSSvrSgGZPXHTlONNmSfdWg9ALEmC8-eznk8E6tu_WgRD8X_riz9dn5Pgxa7I-SpyA4ahz05iSrH8iWbB7MNcLjYHdfumkMCcylhd_haIhUafOD8Uve56a5-ZUkASM9JvtnCOUqTygKEwTYv548uIqzQaYYi3X8b-O6P-QxZFSu3lWlD1iYzaVlV1hXq5nKeD6tUqYHQeNRxjZNs92y7XtSx8Eacmc6_A9dgC2Fdq1o0Ahm_d4aY_F3h0OT_PGdhd8Hewf6ERdJEnVdCF4mTXTcpM-FWCvHm8QpGc7wXREwlgWcbKGyZNxmLKxf-SFo6vCYepqxO9QXBvS7WjCUc_Yi_B-vU9t0baarUh56tATLuCCkE4R86bKtOLchTBEPL6lTGQjPI7A8Jd4D0Mtpb8Kmt35j_gM0lzBtt1ebeb7iM04qzCWaepAlO0wxCGqpWbZNW83SsrVpKK-FOv8gVZLXX3Z7DoDa1BdkfgJLAwz1U-qJJsXiMPctP21Wq8gmgxtMRsdRmQ86YF__Z5WG_lF0bi0VBm50lp9xTGaxpJeGXpv-Z1avrf5xIzsTU7rFuaAYlS_9_Px9YTfrQhCxGs04lf2ww3UBssDOlAjNIzW64KrjtZDrBVs4v6mMK1dug52mIvyb46htdKnmAjQ9pZGrwmgtfkkYMPwWXoq2FrLXyf99ZwgVKsiCzTpvkMPi0rPU_AaHEia_AriaD8lZov1ngBBIKLpQHcskj2qoLhqDnZgePkP0J5ciyPbsPgl9vRxeoRM8u7gL-JXnCQ5dKJwd2Sm2vtoNE8PsJRGwoOA5d9pwFHVPFwsscuoHEu3YY3XUZQP6HhMN3WfY2IpD8bBH2hkyIjfxLPnuG0lRtKGqCpH7mK1rM3pWhNVbd1AKXWhAb28J_Ne3Ip1e8l-EZZzQt-7ihMwUhvL7nNF1oSuCq-dLjlnbhWsCjwhPnkjnj4Hdlu8O2xgbHqYnVjJKYjpZy8N61SHJBqA0JXu_6oxm_CT97CdHCHSr1tO5qVXBLZYP8etqgZyyheURnN6lyPFDJO8S7TyrUW4YAzJbdPYNa_0UiYLS3iM-spXFGvYEWdXdcPy8WfjT2nOgGOuQaiQ=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3667
+          }
+        ],
+        "cachedContentTokenCount": 3667,
+        "candidatesTokenCount": 99,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 99
+          }
+        ],
+        "promptTokenCount": 12679,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 12679
+          }
+        ],
+        "thoughtsTokenCount": 346,
+        "totalTokenCount": 13124,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -1.7453705208261303,
+      "invocationId": "e-0d7db9d9-6f81-4584-9f89-49cbc0f029a2",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "5a6d7708-1bbc-492e-941a-06e26723f9e7",
+      "timestamp": 1780985380.420392
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "dime que incluye"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-0caad038-03a0-4ff4-8f77-26547ba4c286",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "784a2364-2d29-4a67-9fd2-4b11a657e2f2",
+      "timestamp": 1780985405.859475
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"High\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"Uncertain\",\n  \"has_decision_authority\": false,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 6975
+          }
+        ],
+        "cachedContentTokenCount": 6975,
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 11181,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 11181
+          }
+        ],
+        "thoughtsTokenCount": 267,
+        "totalTokenCount": 11519,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -0.9542983149138975,
+      "invocationId": "e-0caad038-03a0-4ff4-8f77-26547ba4c286",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "High",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "Uncertain",
+            "has_decision_authority": false,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "3488e39a-8daa-478f-81c2-59aed647fa00",
+      "timestamp": 1780985405.867797
+    },
+    {
+      "invocationId": "e-0caad038-03a0-4ff4-8f77-26547ba4c286",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 30,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "High",
+            "points": 30
+          },
+          "purchase_urgency": {
+            "value": "Uncertain",
+            "points": 0
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": false,
+            "points": 0
+          }
+        },
+        "bant": {
+          "interest_level": "High",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "Uncertain",
+          "has_decision_authority": false,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "21af84a6-20f8-41a1-89eb-d121161cb6f1",
+      "timestamp": 1780985409.475013
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-5d4a2a89-131b-4a9b-8b5a-a21b9f92fe9e",
+              "args": {
+                "query": "qué incluye el Paracaidismo en Flandes",
+                "matchCount": 4
+              },
+              "name": "search_context"
+            },
+            "thoughtSignature": "ZTI0ODMwYTctNWNkNi00MmZlLTk5OGItZWU1MzllNzJiOWMz"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 7477
+          }
+        ],
+        "cachedContentTokenCount": 7477,
+        "candidatesTokenCount": 22,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 22
+          }
+        ],
+        "promptTokenCount": 12862,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 12862
+          }
+        ],
+        "totalTokenCount": 12884,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-0caad038-03a0-4ff4-8f77-26547ba4c286",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "bec837f7-3713-4a0e-b185-44432fb4ffd7",
+      "timestamp": 1780985409.4935749
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-5d4a2a89-131b-4a9b-8b5a-a21b9f92fe9e",
+              "name": "search_context",
+              "response": {
+                "content": "Result 1\nContent: - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n- **INCLUYE**: Salto tándem, vuelo controlado en paracaídas con instructor certificado, inducción y charla previa, seguro de asistencia médica, equipos certificados bajo estándares internacionales y acceso a instalaciones (sala de espera, baños y parqueadero).\n- **NO INCLUYE**: Traslados desde y hacia Ricaurte o Flandes, gastos personales, fotos, videos, hidratación y snacks.\n- **FECHAS**: Fechas abiertas (sujeto a validación de disponibilidad con un asesor).\n- **PRECIO + NOTA**: Desde 800.000. Se reserva con el 30% del valor total. Pagos con tarjeta a través de BOLD tienen un recargo del 6.5%.\n- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n\nResult 2\nContent: - **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n\nResult 3\nContent: - **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A\n\nResult 4\nContent: - Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.\n**NO INCLUYE**: Traslados desde y hacia el voladero, gastos personales, fotos y videos, hidratación y snacks.\n**FECHAS**: Fechas abiertas a partir de dos personas.\n**PRECIO + NOTA**: \n- Vuelo Meditación (15 min): $250.000 COP.\n- Vuelo Intermedio (20-25 min): $310.000 COP.\n- Vuelo Adrenalina (25 min con maniobras intensas): $370.000 COP.\n- Nota: Pagos con tarjeta mediante BOLD tienen un recargo del 6.5%. Se puede reservar con el 30% del valor. Servicios adicionales: Fotos/Video GoPro ($45.000) y Video 360 ($100.000).\n**PUNTO DE ENCUENTRO**: Zona de vuelo Laguna de Guatavita.\n**NOTA DE SEGURIDAD**: El itinerario puede modificarse dependiendo de las condiciones climáticas. Es obligatorio seguir las instrucciones del piloto y guías.",
+                "artifact": [
+                  {
+                    "id": "4f2a3a3d-0137-4b1b-95cb-c21e1076601f",
+                    "content": "- 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n- **INCLUYE**: Salto tándem, vuelo controlado en paracaídas con instructor certificado, inducción y charla previa, seguro de asistencia médica, equipos certificados bajo estándares internacionales y acceso a instalaciones (sala de espera, baños y parqueadero).\n- **NO INCLUYE**: Traslados desde y hacia Ricaurte o Flandes, gastos personales, fotos, videos, hidratación y snacks.\n- **FECHAS**: Fechas abiertas (sujeto a validación de disponibilidad con un asesor).\n- **PRECIO + NOTA**: Desde 800.000. Se reserva con el 30% del valor total. Pagos con tarjeta a través de BOLD tienen un recargo del 6.5%.\n- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 1,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "a6ff33cb-8dce-445f-a4ee-3d2fe129a1dc",
+                    "content": "- **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "0dd5653e-d20e-4b5e-ad8c-c7e030f910d7",
+                    "content": "- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 2,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "6bee96c8-e5fa-4c30-89ef-8aa17b7ca30f",
+                    "content": "- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.\n**NO INCLUYE**: Traslados desde y hacia el voladero, gastos personales, fotos y videos, hidratación y snacks.\n**FECHAS**: Fechas abiertas a partir de dos personas.\n**PRECIO + NOTA**: \n- Vuelo Meditación (15 min): $250.000 COP.\n- Vuelo Intermedio (20-25 min): $310.000 COP.\n- Vuelo Adrenalina (25 min con maniobras intensas): $370.000 COP.\n- Nota: Pagos con tarjeta mediante BOLD tienen un recargo del 6.5%. Se puede reservar con el 30% del valor. Servicios adicionales: Fotos/Video GoPro ($45.000) y Video 360 ($100.000).\n**PUNTO DE ENCUENTRO**: Zona de vuelo Laguna de Guatavita.\n**NOTA DE SEGURIDAD**: El itinerario puede modificarse dependiendo de las condiciones climáticas. Es obligatorio seguir las instrucciones del piloto y guías.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "chunk_count": 4,
+                      "chunk_index": 1,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "05034d82-4bb6-48ed-9ff3-f2ac9f4632a4"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-0caad038-03a0-4ff4-8f77-26547ba4c286",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "a6b10a13-87f9-4813-ab8c-644d29d1f07d",
+      "timestamp": 1780985415.603847
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "¡Claro que sí! Para que tengas todo súper claro, esto es lo que está cubierto en el plan:\n\n- *Incluye:*\n  - Salto tándem y vuelo controlado en paracaídas con instructor certificado.\n  - Inducción y charla previa al salto.\n  - Seguro de asistencia médica.\n  - Equipos certificados (estándares internacionales).\n  - Acceso a instalaciones (sala de espera, baños y parqueadero).\n\n- *No incluye:*\n  - Traslados hacia/desde Flandes o Ricaurte.\n  - Fotos, videos, hidratación ni snacks.\n\n¿Te gustaría revisar las fechas disponibles o conocer el itinerario del día?"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 7689
+          }
+        ],
+        "cachedContentTokenCount": 7689,
+        "candidatesTokenCount": 148,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 148
+          }
+        ],
+        "promptTokenCount": 16157,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 16157
+          }
+        ],
+        "totalTokenCount": 16305,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-0caad038-03a0-4ff4-8f77-26547ba4c286",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "9dc54945-0a4f-4d9e-97d2-11c3aa88422c",
+      "timestamp": 1780985415.624008
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "que fechas tienes?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-553da05c-7762-4bd5-9ef6-3399b7dc694e",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "f8980f35-ba74-42b4-9ca8-e4cec4b254d6",
+      "timestamp": 1780985436.256177
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"High\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"Uncertain\",\n  \"has_decision_authority\": false,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 10023
+          }
+        ],
+        "cachedContentTokenCount": 10023,
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 14585,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 14585
+          }
+        ],
+        "thoughtsTokenCount": 473,
+        "totalTokenCount": 15129,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -2.841179431324274,
+      "invocationId": "e-553da05c-7762-4bd5-9ef6-3399b7dc694e",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "High",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "Uncertain",
+            "has_decision_authority": false,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "53f986c4-9791-4962-8bbe-af68d6f6e17a",
+      "timestamp": 1780985436.2664561
+    },
+    {
+      "invocationId": "e-553da05c-7762-4bd5-9ef6-3399b7dc694e",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 30,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "High",
+            "points": 30
+          },
+          "purchase_urgency": {
+            "value": "Uncertain",
+            "points": 0
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": false,
+            "points": 0
+          }
+        },
+        "bant": {
+          "interest_level": "High",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "Uncertain",
+          "has_decision_authority": false,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "f9121151-860e-4622-9901-8c4db7b1a5a3",
+      "timestamp": 1780985441.142664
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "adk-23016643-3372-4daa-9d95-28ae97dbc332",
+              "args": {
+                "matchCount": 4,
+                "query": "fechas Paracaidismo en Flandes"
+              },
+              "name": "search_context"
+            },
+            "thoughtSignature": "ZTI0ODMwYTctNWNkNi00MmZlLTk5OGItZWU1MzllNzJiOWMz"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 11277
+          }
+        ],
+        "cachedContentTokenCount": 11277,
+        "candidatesTokenCount": 21,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 21
+          }
+        ],
+        "promptTokenCount": 16018,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 16018
+          }
+        ],
+        "totalTokenCount": 16039,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-553da05c-7762-4bd5-9ef6-3399b7dc694e",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "longRunningToolIds": [],
+      "id": "37651f08-d4de-458b-8d61-e70c2a6c1b3e",
+      "timestamp": 1780985441.1566982
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "adk-23016643-3372-4daa-9d95-28ae97dbc332",
+              "name": "search_context",
+              "response": {
+                "content": "Result 1\nContent: - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n- **INCLUYE**: Salto tándem, vuelo controlado en paracaídas con instructor certificado, inducción y charla previa, seguro de asistencia médica, equipos certificados bajo estándares internacionales y acceso a instalaciones (sala de espera, baños y parqueadero).\n- **NO INCLUYE**: Traslados desde y hacia Ricaurte o Flandes, gastos personales, fotos, videos, hidratación y snacks.\n- **FECHAS**: Fechas abiertas (sujeto a validación de disponibilidad con un asesor).\n- **PRECIO + NOTA**: Desde 800.000. Se reserva con el 30% del valor total. Pagos con tarjeta a través de BOLD tienen un recargo del 6.5%.\n- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n\nResult 2\nContent: - **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n\nResult 3\nContent: - **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A\n\nResult 4\nContent: **PLAN**: Parapente en Guatavita\n**CATEGORÍA**: Aventura / Aire\n**DURACIÓN**: 1 Día\n**DESCRIPCIÓN**: Experiencia de vuelo en parapente biplaza sobre el Embalse de Tominé y la sabana de Bogotá. Acompañado por pilotos profesionales, permite disfrutar de vistas panorámicas de montañas y valles desde una perspectiva única. Es una actividad apta para principiantes que combina la sensación de libertad con la contemplación de la naturaleza.\n**UBICACIÓN**: Guatavita, Cundinamarca (aproximadamente a una hora y media de Bogotá).\n**ALTURA**: 2.700 MSNM\n**DIFICULTAD**: 1/5 Principiante\n**TIPO**: Parapente\n**ITINERARIO**: \n- Encuentro en el punto de la zona de vuelo.\n- Verificación de datos.\n- Charla técnica con instructor asignado.\n- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.",
+                "artifact": [
+                  {
+                    "id": "4f2a3a3d-0137-4b1b-95cb-c21e1076601f",
+                    "content": "- 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.\n- **INCLUYE**: Salto tándem, vuelo controlado en paracaídas con instructor certificado, inducción y charla previa, seguro de asistencia médica, equipos certificados bajo estándares internacionales y acceso a instalaciones (sala de espera, baños y parqueadero).\n- **NO INCLUYE**: Traslados desde y hacia Ricaurte o Flandes, gastos personales, fotos, videos, hidratación y snacks.\n- **FECHAS**: Fechas abiertas (sujeto a validación de disponibilidad con un asesor).\n- **PRECIO + NOTA**: Desde 800.000. Se reserva con el 30% del valor total. Pagos con tarjeta a través de BOLD tienen un recargo del 6.5%.\n- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 1,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "a6ff33cb-8dce-445f-a4ee-3d2fe129a1dc",
+                    "content": "- **PLAN**: Paracaidismo en Flandes con Xielo\n- **CATEGORÍA**: Deporte de aventura / Paracaidismo\n- **DURACIÓN**: 1 Día\n- **DESCRIPCIÓN**: Experiencia de adrenalina extrema saltando al vacío en un salto tándem a más de 10,000 pies de altura. Durante la caída libre y el vuelo controlado se disfrutan vistas espectaculares del río Magdalena, las montañas del Tolima y la llanura cundiboyacense. Flandes es reconocido por su tradición aeronáutica y un clima ideal que permite vuelos durante todo el año.\n- **UBICACIÓN**: Flandes, Tolima\n- **ALTURA**: 285 MSNM\n- **DIFICULTAD**: 1/5 Principiante\n- **TIPO**: Paracaidismo\n- **ITINERARIO**: \n    - 8:00 am: Encuentro en el Aeropuerto Santiago Vila en Flandes.\n    - 8:30 am: Registro y comparación de datos.\n    - 9:00 am: Inducción y Salto Tándem (el turno de vuelo se asigna según el orden de llegada).\n    - 3:00 pm: Retorno a la ciudad de origen.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "0dd5653e-d20e-4b5e-ad8c-c7e030f910d7",
+                    "content": "- **PUNTO DE ENCUENTRO**: Aeropuerto Santiago Vila en Flandes, Tolima (a 10 minutos de Girardot). El plan no incluye el transporte hasta el punto de encuentro.\n- **NOTA DE SEGURIDAD**: Seguridad garantizada con equipos modernos y expertos certificados. No está permitido saltar bajo los efectos del alcohol o estupefacientes. Consultar condiciones médicas con su doctor de confianza.\n- **RESTRICCIÓN DE EDAD**: Mínimo 12 años. No hay límite máximo de edad.\n- **DISPONIBILIDAD**: Permanente (sujeto a condiciones climáticas).\n- **RECOMENDACIONES**: Presentar documento de identidad con foto, vestir ropa cómoda y tenis de amarrar. Se recomienda llegar una hora antes de la cita programada. El peso máximo permitido es de 100 kilos (personas de más de 85 kilos deben consultar previamente).\n- **PREGUNTAS**: N/A",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/paracaidismo-en-flandes/",
+                      "chunk_count": 3,
+                      "chunk_index": 2,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "219c8814-3117-425c-a015-dbd44654b2a1"
+                    }
+                  },
+                  {
+                    "id": "5bdeac2b-95cb-49f0-a87d-3c4cf2880a22",
+                    "content": "**PLAN**: Parapente en Guatavita\n**CATEGORÍA**: Aventura / Aire\n**DURACIÓN**: 1 Día\n**DESCRIPCIÓN**: Experiencia de vuelo en parapente biplaza sobre el Embalse de Tominé y la sabana de Bogotá. Acompañado por pilotos profesionales, permite disfrutar de vistas panorámicas de montañas y valles desde una perspectiva única. Es una actividad apta para principiantes que combina la sensación de libertad con la contemplación de la naturaleza.\n**UBICACIÓN**: Guatavita, Cundinamarca (aproximadamente a una hora y media de Bogotá).\n**ALTURA**: 2.700 MSNM\n**DIFICULTAD**: 1/5 Principiante\n**TIPO**: Parapente\n**ITINERARIO**: \n- Encuentro en el punto de la zona de vuelo.\n- Verificación de datos.\n- Charla técnica con instructor asignado.\n- Instalación de equipos.\n- Procedimiento de vuelo (según orden de llegada y peso).\n- Regreso al lugar de origen.\n**INCLUYE**: Seguro de asistencia médica, vuelo con piloto certificado, derecho de despegue y equipo básico.",
+                    "metadata": {
+                      "title": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "mime_type": "text/markdown",
+                      "source_url": "https://xperiencia.com.co/tours/parapente-en-guatavita/",
+                      "chunk_count": 4,
+                      "chunk_index": 0,
+                      "gemini_cleaned": true,
+                      "discovered_from": "links",
+                      "organization_id": "a6446505-6a65-4c76-848a-9bd9ffabbcf2",
+                      "cleansing_failed": false,
+                      "knowledge_source_id": "05034d82-4bb6-48ed-9ff3-f2ac9f4632a4"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-553da05c-7762-4bd5-9ef6-3399b7dc694e",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "bb69ed96-255d-420a-bd53-d4ba887a89bc",
+      "timestamp": 1780985448.984781
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "Para este salto en Flandes manejamos fechas abiertas. Como operamos de manera permanente (siempre sujetos al buen clima), solo es cuestión de revisar la disponibilidad para el día que tengas en mente. \n\n¿Ya tienes alguna fecha pensada para hacer el salto, o viajas solo o acompañado?"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 15078
+          }
+        ],
+        "cachedContentTokenCount": 15078,
+        "candidatesTokenCount": 62,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 62
+          }
+        ],
+        "promptTokenCount": 18871,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 18871
+          }
+        ],
+        "totalTokenCount": 18933,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -0.7319479753719795,
+      "invocationId": "e-553da05c-7762-4bd5-9ef6-3399b7dc694e",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "e2f6c86a-efd8-4b21-99ad-c39ba21c96a2",
+      "timestamp": 1780985449.004885
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "ok quiero reservar para este fin de semana"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c3e74130-dd63-4a30-b390-c663f5f20a75",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "70cee18f-767c-4e59-9813-a14c605922f9",
+      "timestamp": 1780985470.498272
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"High\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"ShortTerm\",\n  \"has_decision_authority\": false,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 3017
+          }
+        ],
+        "cachedContentTokenCount": 3017,
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 17848,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 17848
+          }
+        ],
+        "thoughtsTokenCount": 487,
+        "totalTokenCount": 18406,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -2.205622283505722,
+      "invocationId": "e-c3e74130-dd63-4a30-b390-c663f5f20a75",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "High",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "ShortTerm",
+            "has_decision_authority": false,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "9c7b7995-45b1-4304-80b9-62abe6526d65",
+      "timestamp": 1780985470.50694
+    },
+    {
+      "invocationId": "e-c3e74130-dd63-4a30-b390-c663f5f20a75",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 45,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "High",
+            "points": 30
+          },
+          "purchase_urgency": {
+            "value": "ShortTerm",
+            "points": 15
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": false,
+            "points": 0
+          }
+        },
+        "bant": {
+          "interest_level": "High",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "ShortTerm",
+          "has_decision_authority": false,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "ae0167e5-a9ee-43e9-997c-cc6c3a92ccb1",
+      "timestamp": 1780985474.66309
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "¡Qué buena noticia! Saltas este fin de semana, te va a encantar la experiencia.\n\n¿Irías tú solo(a) o vas con alguien más para esta aventura?"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "candidatesTokenCount": 38,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 38
+          }
+        ],
+        "promptTokenCount": 19021,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 19021
+          }
+        ],
+        "totalTokenCount": 19059,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -0.7662864861004102,
+      "invocationId": "e-c3e74130-dd63-4a30-b390-c663f5f20a75",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "24f94d35-7ed5-475a-b624-5ff0e1a1f06f",
+      "timestamp": 1780985474.6801438
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "solo"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-ac71e109-a82a-4054-9258-4592c34d90d0",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "12fb9eec-174a-4048-a9a0-1804f9de3933",
+      "timestamp": 1780985485.963445
+    },
+    {
+      "modelVersion": "gemini-flash-latest",
+      "content": {
+        "parts": [
+          {
+            "text": "{\n  \"interest_level\": \"High\",\n  \"budget_status\": \"NotMentioned\",\n  \"purchase_urgency\": \"ShortTerm\",\n  \"has_decision_authority\": true,\n  \"explicit_human_request\": false,\n  \"plan_and_date_confirmed\": false\n}"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 14076
+          }
+        ],
+        "cachedContentTokenCount": 14076,
+        "candidatesTokenCount": 71,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 71
+          }
+        ],
+        "promptTokenCount": 17967,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 17967
+          }
+        ],
+        "thoughtsTokenCount": 717,
+        "totalTokenCount": 18755,
+        "trafficType": "ON_DEMAND"
+      },
+      "avgLogprobs": -4.576310708489217,
+      "invocationId": "e-ac71e109-a82a-4054-9258-4592c34d90d0",
+      "author": "qualifier",
+      "actions": {
+        "stateDelta": {
+          "bant_result": {
+            "interest_level": "High",
+            "budget_status": "NotMentioned",
+            "purchase_urgency": "ShortTerm",
+            "has_decision_authority": true,
+            "explicit_human_request": false,
+            "plan_and_date_confirmed": false
+          }
+        },
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1/qualifier@1"
+      },
+      "id": "8fb25b93-ae08-48d7-a7c7-1576f4fc4aab",
+      "timestamp": 1780985485.972534
+    },
+    {
+      "invocationId": "e-ac71e109-a82a-4054-9258-4592c34d90d0",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {},
+        "route": "CONTINUE"
+      },
+      "output": {
+        "score": 65,
+        "threshold": 70,
+        "qualifies": false,
+        "breakdown": {
+          "interest_level": {
+            "value": "High",
+            "points": 30
+          },
+          "purchase_urgency": {
+            "value": "ShortTerm",
+            "points": 15
+          },
+          "budget_status": {
+            "value": "NotMentioned",
+            "points": 0
+          },
+          "has_decision_authority": {
+            "value": true,
+            "points": 20
+          }
+        },
+        "bant": {
+          "interest_level": "High",
+          "budget_status": "NotMentioned",
+          "purchase_urgency": "ShortTerm",
+          "has_decision_authority": true,
+          "explicit_human_request": false,
+          "plan_and_date_confirmed": false
+        }
+      },
+      "nodeInfo": {
+        "path": "amaru@1/qualify@1",
+        "outputFor": [
+          "amaru@1/qualify@1"
+        ]
+      },
+      "id": "63099efe-f1ab-4b8c-aa39-9f0ebdbf6eb0",
+      "timestamp": 1780985491.165285
+    },
+    {
+      "modelVersion": "gemini-3.1-pro-preview",
+      "content": {
+        "parts": [
+          {
+            "text": "¡Perfecto! Un salto para ti este fin de semana en Flandes. Será una experiencia increíble volar sobre el Magdalena. \n\nUn asesor humano de nuestro equipo se contactará contigo por aquí en breve para confirmar la disponibilidad exacta, ayudarte con el 30% del abono inicial y finalizar los detalles de tu reserva. \n\n¿Tienes alguna otra duda sobre el salto o recomendaciones de ropa antes de que te contacten?"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cacheTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 15378
+          }
+        ],
+        "cachedContentTokenCount": 15378,
+        "candidatesTokenCount": 88,
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 88
+          }
+        ],
+        "promptTokenCount": 19516,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 19516
+          }
+        ],
+        "totalTokenCount": 19604,
+        "trafficType": "ON_DEMAND"
+      },
+      "invocationId": "e-ac71e109-a82a-4054-9258-4592c34d90d0",
+      "author": "amaru",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "amaru@1/amaru@1"
+      },
+      "id": "624c70fe-8754-4a7d-84e2-cb2e6460509a",
+      "timestamp": 1780985491.182753
+    }
+  ],
+  "lastUpdateTime": 1780985491.182753
+}

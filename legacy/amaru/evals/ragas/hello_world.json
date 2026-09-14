@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sano-precio-guatavita",
+    "label": "sano",
+    "user_input": "¿Cuánto cuesta el parapente en Guatavita?",
+    "retrieved_contexts": [
+      "Parapente en Guatavita. Vuelo Meditación (15 min) $250.000 COP; Vuelo Intermedio (20-25 min) $310.000 COP; Vuelo Adrenalina (25 min con maniobras intensas) $370.000 COP. Pagos con tarjeta BOLD tienen recargo del 6.5%. Se puede reservar con el 30%."
+    ],
+    "response": "El vuelo Meditación (15 min) cuesta $250.000 COP, el Intermedio (20-25 min) $310.000 COP y el Adrenalina (25 min) $370.000 COP. Reserva con el 30%. Pagos BOLD tienen recargo del 6.5%.",
+    "reference": "Vuelo Meditación (15 min) $250.000 COP; Vuelo Intermedio (20-25 min) $310.000 COP; Vuelo Adrenalina (25 min con maniobras intensas) $370.000 COP. Pagos con tarjeta BOLD tienen recargo del 6.5%. Se puede reservar con el 30%."
+  },
+  {
+    "id": "retriever-chingaza-con-parapente",
+    "label": "retriever_enfermo",
+    "user_input": "¿A qué altura está el Parque Nacional Natural Chingaza?",
+    "retrieved_contexts": [
+      "Parapente en Guatavita: vuelo biplaza sobre el Embalse de Tominé y la sabana de Bogotá, a 2.700 MSNM. Dificultad 1/5 principiante. Punto de encuentro: zona de vuelo Laguna de Guatavita."
+    ],
+    "response": "El parapente en Guatavita está a 2.700 MSNM, en la zona de vuelo Laguna de Guatavita.",
+    "reference": "4000 MSNM, en La Calera, Cundinamarca."
+  },
+  {
+    "id": "generador-inventa-precio",
+    "label": "generador_enfermo",
+    "user_input": "¿Cuánto cuestan las fotos GoPro del parapente en Guatavita?",
+    "retrieved_contexts": [
+      "Parapente en Guatavita. Fotos/Video GoPro $45.000 y Video 360 $100.000. No vienen incluidas en el vuelo. El vuelo sí incluye seguro de asistencia médica, piloto certificado, derecho de despegue y equipo básico."
+    ],
+    "response": "Las fotos GoPro salen $15.000 y el video 360 es gratis si reservas hoy.",
+    "reference": "Fotos/Video GoPro $45.000 y Video 360 $100.000. No vienen incluidas en el vuelo."
+  }
+]

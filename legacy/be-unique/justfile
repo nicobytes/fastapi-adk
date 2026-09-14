@@ -1,0 +1,90 @@
+_ensure-wheel:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  shopt -s nullglob
+  wheels=(vendor/chatty_agent_common-*.whl)
+  if [[ ${#wheels[@]} -eq 1 ]]; then
+    exit 0
+  fi
+  just vendor-common
+  uv lock --upgrade-package chatty-agent-common
+
+fmt: _ensure-wheel
+  uv run ruff format .
+
+fmt-check: _ensure-wheel
+  uv run ruff format --check .
+
+lint: _ensure-wheel
+  uv run ruff check .
+
+ci:
+  just vendor-common
+  uv lock --upgrade-package chatty-agent-common
+  uv sync --frozen
+  just fmt-check
+  just lint
+  uv run python -m pytest --ignore=tests/integration
+
+# Materializa .env desde .env.local o .env.prod (agents-cli/ADK solo leen .env).
+_use-env env:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  src=".env.{{env}}"
+  if [[ ! -f "$src" ]]; then
+    echo "error: missing ${src}. Create it from .env.example (cp .env.example ${src})." >&2
+    exit 1
+  fi
+  cp "$src" .env
+  echo "Using ${src} → .env"
+
+# Build chatty-agent-common wheel into vendor/ (Agent Runtime tarball has no ../ siblings).
+# Common version is fixed at 0.0.0 so the PEP 427 filename (and uv.sources path) stays stable.
+vendor-common:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  mkdir -p vendor
+  rm -rf vendor/chatty-agent-common
+  rm -f vendor/chatty_agent_common-*.whl vendor/chatty-agent-common.whl
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' EXIT
+  (cd ../chatty-agent-common && SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-315532800}" uv build --wheel --out-dir "$tmp")
+  shopt -s nullglob
+  wheels=("$tmp"/chatty_agent_common-*.whl)
+  if [[ ${#wheels[@]} -ne 1 ]]; then
+    echo "error: expected exactly one wheel in ${tmp}, got: ${wheels[*]-<none>}" >&2
+    exit 1
+  fi
+  cp "${wheels[0]}" "vendor/$(basename "${wheels[0]}")"
+
+# Rebuild wheel + refresh uv.lock hash (version stays 0.0.0; content hash changes).
+# Deploy/Docker use `uv sync --frozen`, so the lock must match the wheel in vendor/.
+lock-common: vendor-common
+  uv lock --upgrade-package chatty-agent-common
+
+sync: lock-common
+  uv sync
+
+# lock-common (not only vendor-common): uv run checks the wheel hash against uv.lock.
+serve: lock-common (_use-env "local")
+  ADK_DEV_MODE=true uv run agents-cli playground --reload_agents
+
+# Playground against cloud credentials (.env.prod). ADK_DEV_MODE keeps UI mirror /
+# handoff skip; playground DB bridge refuses non-localhost SUPABASE_URL.
+serve-prod: lock-common (_use-env "prod")
+  ADK_DEV_MODE=true SENTRY_DSN= uv run agents-cli playground --reload_agents
+
+upgrade: lock-common
+  uv sync --upgrade
+
+deploy: lock-common (_use-env "prod")
+  uv run agents-cli deploy --project=chatty-agents-ia --no-confirm-project --update-only
+
+deploy-dry: lock-common (_use-env "prod")
+  uv run agents-cli deploy --project=chatty-agents-ia --dry-run
+
+deploy-status:
+  uv run agents-cli deploy --status
+
+deploy-list:
+  uv run agents-cli deploy --list

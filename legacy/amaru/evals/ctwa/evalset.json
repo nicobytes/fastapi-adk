@@ -1,0 +1,47 @@
+{
+  "eval_set_id": "ctwa_eval_set",
+  "eval_cases": [
+    {
+      "eval_id": "generic_icebreaker_with_ad_state",
+      "conversation": [
+        {
+          "invocation_id": "e-ctwa-001",
+          "user_content": {
+            "parts": [
+              {
+                "text": "¡Hola! Quiero más información"
+              }
+            ],
+            "role": "user"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "search_context",
+                "args": {
+                  "query": "avistamiento de ballenas Nuquí"
+                }
+              }
+            ]
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "¡Hola! Soy Amaru tu guía digital del equipo Xperiencia 🏔️ El tour de avistamiento de ballenas en Nuquí incluye salidas en temporada de ballenas jorobadas. ¿Te cuento qué incluye el plan?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "amaru",
+        "user_id": "user",
+        "state": {
+          "ctwa_ad_body": "Tour de avistamiento de ballenas en Nuquí",
+          "ctwa_plan_hint": "👋 ¡Hola! Bienvenido a Xperiencia. Vimos que te interesó nuestro plan de avistamiento de ballenas."
+        }
+      }
+    }
+  ]
+}
