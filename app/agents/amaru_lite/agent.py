@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from google.adk.agents import LlmAgent
-from google.adk.tools import BaseTool
+from google.adk.tools.base_tool import BaseTool
 
 
 def create_amaru_lite_agent(*, tools: list[BaseTool], model: str = "gemini-2.5-flash") -> LlmAgent:

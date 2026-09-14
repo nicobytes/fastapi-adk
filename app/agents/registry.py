@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from google.adk.agents import LlmAgent
-from google.adk.tools import BaseTool
+from google.adk.tools.base_tool import BaseTool
 
 from app.agents.default import create_default_agent
 from app.constants import DEFAULT_AGENT_ID

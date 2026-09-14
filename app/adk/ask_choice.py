@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from google.adk.tools import LongRunningFunctionTool, ToolContext
+from google.adk.tools import ToolContext
+from google.adk.tools.long_running_tool import LongRunningFunctionTool
 
 from app.channel.service import ChannelService
 from app.conversations.store import ConversationStore
