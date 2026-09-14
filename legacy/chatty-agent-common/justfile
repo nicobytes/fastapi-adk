@@ -1,0 +1,14 @@
+fmt:
+  uv run ruff format .
+
+fmt-check:
+  uv run ruff format --check .
+
+lint:
+  uv run ruff check .
+
+ci:
+  uv sync --frozen
+  just fmt-check
+  just lint
+  uv run python -m pytest

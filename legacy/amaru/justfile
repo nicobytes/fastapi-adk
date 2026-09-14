@@ -1,0 +1,184 @@
+_ensure-wheel:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  shopt -s nullglob
+  wheels=(vendor/chatty_agent_common-*.whl)
+  if [[ ${#wheels[@]} -eq 1 ]]; then
+    exit 0
+  fi
+  just vendor-common
+  uv lock --upgrade-package chatty-agent-common
+
+fmt: _ensure-wheel
+  uv run ruff format .
+
+fmt-check: _ensure-wheel
+  uv run ruff format --check .
+
+lint: _ensure-wheel
+  uv run ruff check .
+
+ci:
+  just vendor-common
+  uv lock --upgrade-package chatty-agent-common
+  uv sync --frozen
+  just fmt-check
+  just lint
+  uv run python -m pytest --ignore=tests/integration
+
+# Materializa .env desde .env.local o .env.prod (agents-cli/ADK solo leen .env).
+_use-env env:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  src=".env.{{env}}"
+  if [[ ! -f "$src" ]]; then
+    echo "error: missing ${src}. Create it from .env.example (cp .env.example ${src})." >&2
+    exit 1
+  fi
+  cp "$src" .env
+  echo "Using ${src} → .env"
+
+# Build chatty-agent-common wheel into vendor/ (Agent Runtime tarball has no ../ siblings).
+# Common version is fixed at 0.0.0 so the PEP 427 filename (and uv.sources path) stays stable.
+vendor-common:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  mkdir -p vendor
+  rm -rf vendor/chatty-agent-common
+  rm -f vendor/chatty_agent_common-*.whl vendor/chatty-agent-common.whl
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' EXIT
+  (cd ../chatty-agent-common && SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-315532800}" uv build --wheel --out-dir "$tmp")
+  shopt -s nullglob
+  wheels=("$tmp"/chatty_agent_common-*.whl)
+  if [[ ${#wheels[@]} -ne 1 ]]; then
+    echo "error: expected exactly one wheel in ${tmp}, got: ${wheels[*]-<none>}" >&2
+    exit 1
+  fi
+  cp "${wheels[0]}" "vendor/$(basename "${wheels[0]}")"
+
+# Rebuild wheel + refresh uv.lock hash (version stays 0.0.0; content hash changes).
+# Deploy/Docker use `uv sync --frozen`, so the lock must match the wheel in vendor/.
+lock-common: vendor-common
+  uv lock --upgrade-package chatty-agent-common
+
+sync: lock-common
+  uv sync --extra ragas
+
+# lock-common (not only vendor-common): uv run checks the wheel hash against uv.lock.
+serve: lock-common (_use-env "local")
+  ADK_DEV_MODE=true uv run agents-cli playground --reload_agents
+
+# Playground against cloud credentials (.env.prod). ADK_DEV_MODE keeps UI mirror /
+# handoff skip; playground DB bridge refuses non-localhost SUPABASE_URL.
+serve-prod: lock-common (_use-env "prod")
+  ADK_DEV_MODE=true SENTRY_DSN= uv run agents-cli playground --reload_agents
+
+upgrade: lock-common
+  uv sync --extra ragas --upgrade
+
+eval-greeting: (_use-env "local")
+  uv run adk eval app ./evals/greeting/evalset.json --config_file_path ./evals/greeting/config.json
+
+eval-ctwa: (_use-env "local")
+  uv run adk eval app ./evals/ctwa/evalset.json --config_file_path ./evals/ctwa/config.json
+
+# HITL handoff suite (agents-cli). ADK_DEV_MODE skips missing Supabase rows.
+# PYTHONPATH injects sitecustomize that patches Vertex AgentConfig for callable
+# instruction providers (build_instruction).
+eval-handoff: (_use-env "local")
+  ADK_DEV_MODE=true PYTHONPATH="tests/eval/path_hooks${PYTHONPATH:+:$PYTHONPATH}" \
+    uv run agents-cli eval generate \
+      --dataset tests/eval/datasets/handoff-es-dataset.json \
+      --output traces_handoff_es/
+
+eval-handoff-grade: (_use-env "local")
+  ADK_DEV_MODE=true uv run agents-cli eval grade --traces traces_handoff_es/
+
+# Ragas hello world: 3 fixed samples, no KB. GEMINI_API_KEY in .env.prod.
+eval-ragas-hello: (_use-env "prod")
+  uv run --extra ragas evals/ragas/hello_world.py
+
+# Ragas A/B semantic vs hybrid against the cloud KB (not the ADK agent).
+# Default k=4 is pinned here; search_context default is 10. GEMINI_API_KEY in .env.prod (AI Studio).
+# Smoke: just eval-ragas -- --limit 10
+eval-ragas *args: (_use-env "prod")
+  #!/usr/bin/env bash
+  set -euo pipefail
+  extra=({{ args }})
+  if ((${#extra[@]})) && [[ ${extra[0]} == -- ]]; then
+    extra=("${extra[@]:1}")
+  fi
+  uv run --extra ragas evals/ragas/run.py --modes semantic,hybrid ${extra[@]+"${extra[@]}"}
+
+# UI MLflow with the local sqlite runs. Empty until just eval-ragas has been run.
+# Open http://127.0.0.1:5000/#/experiments/1 (Runs). Overview > Usage is traces, not these scores.
+eval-ragas-ui:
+  @echo "Runs: http://127.0.0.1:5000/#/experiments/1  (not Overview > Usage)"
+  uv run --extra ragas mlflow ui --backend-store-uri sqlite:///evals/ragas/mlflow.db --port 5000
+
+# display_name in GCP Console is "Amaru Agent" (not project name "amaru").
+# Matching it keeps resource ID …/reasoningEngines/3550046518914318336 on update.
+deploy: lock-common (_use-env "prod")
+  uv run agents-cli deploy \
+    --project=chatty-agents-ia \
+    --region=us-central1 \
+    --service-name="Amaru Agent" \
+    --no-confirm-project \
+    --update-only
+
+deploy-dry: lock-common (_use-env "prod")
+  uv run agents-cli deploy \
+    --project=chatty-agents-ia \
+    --region=us-central1 \
+    --service-name="Amaru Agent" \
+    --dry-run
+
+# Staging Reasoning Engine ("Amaru Agent Stag"). Does not update prod.
+# Writes deployment_metadata.staging.json; restores deployment_metadata.json (prod).
+deploy-stag: lock-common (_use-env "prod")
+  #!/usr/bin/env bash
+  set -euo pipefail
+  if [[ ! -f deployment_metadata.json ]]; then
+    echo "error: deployment_metadata.json (prod) is required" >&2
+    exit 1
+  fi
+  cp deployment_metadata.json .deployment_metadata.prod.bak
+  restore_prod() {
+    if [[ -f .deployment_metadata.prod.bak ]]; then
+      mv .deployment_metadata.prod.bak deployment_metadata.json
+    fi
+  }
+  trap restore_prod EXIT
+  if [[ -f deployment_metadata.staging.json ]]; then
+    cp deployment_metadata.staging.json deployment_metadata.json
+    echo "Using existing staging metadata for update."
+  else
+    echo "No staging metadata yet; deploy will create a new Reasoning Engine."
+  fi
+  uv run agents-cli deploy \
+    --project=chatty-agents-ia \
+    --region=us-central1 \
+    --service-name="Amaru Agent Stag" \
+    --no-confirm-project \
+    --update-only
+  cp deployment_metadata.json deployment_metadata.staging.json
+  restore_prod
+  trap - EXIT
+  STAG_ID="$(python3 -c "import json; print(json.load(open('deployment_metadata.staging.json'))['remote_agent_runtime_id'])")"
+  echo ""
+  echo "Staging engine: ${STAG_ID}"
+  echo "Point local ai_agents.amaru.engine_resource at that ID to test Nest against staging."
+
+deploy-stag-dry: lock-common (_use-env "prod")
+  uv run agents-cli deploy \
+    --project=chatty-agents-ia \
+    --region=us-central1 \
+    --service-name="Amaru Agent Stag" \
+    --dry-run
+
+deploy-status:
+  uv run agents-cli deploy --status
+
+deploy-list:
+  uv run agents-cli deploy --list --region=us-central1 --project=chatty-agents-ia --no-confirm-project

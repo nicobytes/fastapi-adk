@@ -1,0 +1,6 @@
+# agents-cli packages with .gcloudignore when present (else .gitignore).
+# Keep vendor/ out of git, but include the wheel in the Agent Runtime tarball
+# so Dockerfile `COPY ./vendor` + `uv sync --frozen` can resolve chatty-agent-common.
+#!include:.gitignore
+!/vendor/
+!/vendor/**

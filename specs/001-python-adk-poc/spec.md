@@ -1,0 +1,401 @@
+# Feature Specification: Conversational Agent Host Proof
+
+**Feature Branch**: `001-python-adk-poc`
+
+**Created**: 2026-09-14
+
+**Status**: Draft
+
+**Input**: User description: "Este proyecto es un PoC de cómo incorporar el agente conversacional usando NestJS y TypeScript. Quiero literalmente hacer lo mismo usando el kit de agentes de Python y un servicio web Python, con contratos tipados con el mismo rigor que TypeScript, e incluyendo interacción real con WhatsApp."
+
+## User Scenarios & Testing *(mandatory)*
+
+### User Story 1 - Channel is acknowledged before the agent finishes (Priority: P1)
+
+A customer message arrives on the messaging channel. The channel partner must receive a success acknowledgement immediately, before the agent has finished composing a reply. That acknowledgement includes the conversation identity, so later takeover, close, and operator-reply actions can target the same conversation. The turn itself runs as background work. If that work fails, it is tried again. If the application process stops and starts again before a scheduled turn runs, the turn still runs, as long as the durable queue and the conversation stores are still available.
+
+**Why this priority**: This is the reason to put a durable queue in front of the agent. If acknowledgement still waits for the agent, or scheduled work dies with the process, the queue does not earn its place and the proof stops.
+
+**Independent Test**: Send one customer message whose agent turn takes about 1.5 seconds, force one failed attempt, and restart the process while a short-delay turn is waiting. Confirm acknowledgement time, a later successful attempt, and survival of the delayed turn.
+
+**Acceptance Scenarios**:
+
+1. **Given** an agent turn that takes about 1.5 seconds, **When** a customer message is accepted, **Then** success is returned within 100 milliseconds and includes the conversation identity. The customer receives the agent reply only after that acknowledgement.
+2. **Given** a customer message is accepted, **When** success is returned, **Then** the inbound acceptance did not wait for the background turn to finish before responding.
+3. **Given** the first attempt of a turn fails, **When** the work is tried again, **Then** a later attempt runs the agent and the customer receives the reply, within 3 attempts.
+4. **Given** a turn is scheduled to run after a short delay, **When** the application process stops and starts again against the same durable queue and the same conversation stores, **Then** the scheduled turn still runs.
+
+---
+
+### User Story 2 - Rapid texts become one turn, and nothing is lost while busy (Priority: P1)
+
+A customer often sends several short texts in a burst ("hello", then "how are you"). Texts that arrive inside a short grouping window (about 400 milliseconds) should be seen as one turn, not as three separate turns. A text that arrives while a turn is already running must still be handled afterward. A button click must not be folded into that text burst. If a turn for that conversation is already running, the click is scheduled right away but runs only after that turn finishes.
+
+**Why this priority**: Grouping a burst, and not losing messages that arrive during a turn, is a primary reason the product uses a queue. A queue that runs one turn per message, or that drops texts that arrive while busy, is not worth adopting.
+
+**Independent Test**: Send three texts for the same conversation inside the grouping window and confirm a single agent turn containing all three. While a turn is still running, send another text and confirm a follow-up turn includes it. Send a button click while a turn is running and confirm it is not mixed into the text batch, is not dropped, and runs only after that turn finishes.
+
+**Acceptance Scenarios**:
+
+1. **Given** three customer texts for the same conversation arrive within the grouping window, **When** that window elapses, **Then** the agent runs exactly once and that turn's customer input contains all three texts.
+2. **Given** a delayed turn is already scheduled for that conversation, **When** further texts arrive inside the window, **Then** those texts are still kept and included in the single turn, and a competing extra turn is not started for them.
+3. **Given** a turn is already running for a conversation, **When** another customer text arrives for that conversation, **Then** a follow-up turn after the current one includes that text. Losing it is a failure.
+4. **Given** a button click arrives for a conversation that also has free text waiting, **When** work is scheduled, **Then** the click is not placed in the text batch; it is scheduled right away and separately from that text.
+5. **Given** a turn is already running for a conversation, **When** a button click arrives for that conversation, **Then** the click is scheduled right away, is not mixed into the text batch, and runs only after the current turn finishes. It is not dropped and it does not cancel the in-progress turn.
+
+---
+
+### User Story 3 - One busy conversation does not freeze the others (Priority: P1)
+
+While one customer's agent turn is in flight, another customer (or a simple health check) must still be accepted promptly. The proof must show whether background work in the same application actually isolates conversations. If it does not, the decision record must say a separate background service is required. That separate service is not built in this proof.
+
+**Why this priority**: A queue that still blocks every other customer is not background processing. The team needs that evidence before choosing this architecture, the same way they needed it for the existing host proof.
+
+**Independent Test**: Start a turn that is waiting on outside work for about 1.5 seconds, not a turn that freezes the application on purpose. During that wait, accept a message for a different conversation, or request a health check, and measure how quickly that second request succeeds.
+
+**Acceptance Scenarios**:
+
+1. **Given** one conversation's agent turn is waiting about 1.5 seconds on outside work, **When** another conversation's message is accepted or a health check is requested, **Then** that second request succeeds within 200 milliseconds.
+2. **Given** the second request does not succeed within 200 milliseconds because the application is stuck, **When** the demonstration is recorded, **Then** the decision record states that a separate background service is required, and that service is not built in this proof.
+
+---
+
+### User Story 4 - A choice pauses, a click resumes, and the customer is not spammed (Priority: P1)
+
+The agent asks the customer to choose among options and shows buttons. That turn completes; a pause is not work left hanging. The customer's click resumes the same choice. The remembered response is the option that was chosen, not a typed stand-in such as the letter of the option as the only user text. A click when no choice is pending is stored in the inbox and does not start the agent or become typed customer text. The pause survives a process restart. Retrying the turn after the buttons were already sent does not send the buttons again. A pause does not also send leftover prose.
+
+**Why this priority**: Choice-and-resume is existing product behavior that must keep working once turns move to background work. A double send, a lost pause, or a resume that looks like typed text is a no-go.
+
+**Independent Test**: Run a turn that asks for a choice, click an option, and confirm one buttons send, a choice response in agent memory, and no extra prose. Repeat with a process restart between the ask and the click. Repeat with a failure after the buttons were sent, and confirm the retry does not send a second set. Click when no choice is pending and confirm the inbox stores it, the agent does not run, and no typed customer text is created.
+
+**Acceptance Scenarios**:
+
+1. **Given** the agent asks the customer to choose, **When** the turn finishes, **Then** the customer has been shown buttons once, the turn is complete rather than left hanging, and a pending choice is recorded. The operator inbox shows that a buttons message was sent.
+2. **Given** a pending choice, **When** the customer clicks an option, **Then** the agent resumes that same choice. Agent memory records the chosen option identity. A typed stand-in, such as the letter of the option, is not the only trace of the click.
+3. **Given** a choice is pending, **When** the application process restarts before the click, **Then** the click still resumes the choice. The pending choice is read from durable agent memory. Temporary memory that disappears when the process stops is not an acceptable source; if that is the only source, the design fails and must be corrected before the demonstration can pass.
+4. **Given** buttons were already sent for a choice and the background work then fails, **When** that same work is retried, **Then** buttons are not sent a second time for that choice request.
+5. **Given** a turn pauses to ask for a choice, **When** outbound messages for that turn are reviewed, **Then** the customer sees one buttons message and no leftover prose. If the agent both speaks and asks for a choice, the prose is not sent. If leftover prose cannot be withheld, the decision record states a no-go for delivery to the customer.
+6. **Given** no choice is pending for a conversation, **When** the customer clicks, **Then** the click is stored as a choice message in the inbox, the agent does not run, and no typed customer text is invented for that click.
+
+---
+
+### User Story 5 - The conversation is not the channel identity (Priority: P2)
+
+Each open customer thread has its own conversation identity. That identity is what the agent uses as its session. The messaging-channel identity (who to address on the channel) is stored on the conversation, not encoded into the session. Two different channel identities are two conversations. The same channel identity reuses the open conversation. Closing a conversation makes the next message from that channel identity start a new conversation and a new agent session.
+
+**Why this priority**: Human takeover, export, and later bookings hang off the conversation, not off a channel-derived session key. If those cannot be separated, the product architecture is a no-go even if the queue works.
+
+**Independent Test**: Accept messages from two channel identities and confirm two conversations and two agent sessions. Accept a second message from the first identity and confirm reuse. Close that conversation, send again, and confirm a new conversation and a new agent session.
+
+**Acceptance Scenarios**:
+
+1. **Given** a customer message with a channel identity and text, **When** no open conversation exists for that identity, **Then** one conversation is created in automatic-bot status, the agent's session identity is the conversation's own identity, and the channel identity is stored on the conversation so replies can be addressed.
+2. **Given** two different channel identities, **When** each sends a message, **Then** two conversations and two agent sessions exist.
+3. **Given** an open conversation for a channel identity, **When** that same identity sends again, **Then** the same conversation and the same agent session are reused.
+4. **Given** a conversation has been closed, **When** the same channel identity sends again, **Then** a new conversation identity and a new agent session are used.
+
+---
+
+### User Story 6 - Human takeover silences the agent (Priority: P2)
+
+An operator takes a conversation. Takeover sets waiting-for-human. This proof does not include a separate action that sets human-active. If that status is already set, further customer messages accepted after that status change are stored and do not start the agent or send bot text or buttons, the same as waiting-for-human. A turn that was already scheduled before the status change still runs the agent to completion, and that is not a failure. Releasing the conversation back to the bot allows the next customer message to run the agent again. No operator console is required; the takeover and release actions themselves are enough.
+
+**Why this priority**: A new customer message after takeover must not start the agent. That rule is about work accepted after the status change, not about cancelling work that was already scheduled.
+
+**Independent Test**: Mark a conversation as waiting for a human, send a customer message, and confirm it is stored with no new agent turn and no bot outbound. Set human-active directly, without a dedicated action, and confirm the same skip rule. Separately, schedule a turn, change the status before it runs, and confirm that already-scheduled turn still runs the agent. Release the conversation and confirm the next message runs the agent.
+
+**Acceptance Scenarios**:
+
+1. **Given** a conversation is waiting for a human, **When** the customer sends a message, **Then** the message is stored as a customer inbox message, the agent does not run, and no bot text or buttons are sent.
+2. **Given** a conversation is already in human-active status, without using a dedicated action to enter that status, **When** the customer sends a message, **Then** the same skip rules apply: the message is stored, the agent does not run, and no bot outbound is sent.
+3. **Given** a conversation is released back to automatic-bot, **When** the customer sends again, **Then** the agent runs for that message.
+4. **Given** a turn was already scheduled while the conversation was automatic-bot, **When** the status then changes to waiting-for-human, human-active, or closed before that turn runs, **Then** that already-scheduled turn still runs the agent on that same conversation. It is not cancelled and its texts are not discarded. A customer message accepted only after the status change does not start another agent turn.
+
+---
+
+### User Story 7 - An operator reply is remembered on the next agent turn (Priority: P2)
+
+Today an operator can speak on the channel and the agent never sees it. That is a silent failure for coexistence. An operator reply must be sent to the customer, stored in the inbox, and written into agent memory without asking the agent to generate a reply. The next customer question must be answered in light of what the operator said.
+
+**Why this priority**: If the human and the agent do not share memory, the CRM and the agent cannot coexist. Copying inbox messages into the history the agent reads is not an acceptable substitute.
+
+**Independent Test**: Operator says "the price is 100". Customer then asks what the price was. The agent's reply mentions 100. Confirm the operator text was stored in the inbox and written into agent memory without an agent reply at the moment of the operator message.
+
+**Acceptance Scenarios**:
+
+1. **Given** an operator sends "the price is 100", **When** the reply is accepted, **Then** the customer receives that text, the inbox stores an operator message, and agent memory is updated without generating an agent reply.
+2. **Given** that operator statement is in agent memory, **When** the customer asks what the price was, **Then** the agent's reply reflects that the price is 100.
+3. **Given** an operator statement cannot be written in a form the agent will see, **When** the demonstration is recorded, **Then** it is a failure: the operator statement must be in agent memory. Copying inbox rows into the history the agent reads is not an acceptable workaround.
+
+---
+
+### User Story 8 - The inbox and agent memory stay separate (Priority: P2)
+
+After an ordinary bot turn, the operator inbox and the agent's memory both contain that turn, but they are not substitutes for each other. The agent prepares its next turn only from its own memory. The operator inbox is painted only from inbox messages. Both survive a process restart. The agent must not be fed a hand-built history copied out of the inbox.
+
+**Why this priority**: This answers whether a production database clone is required. It is not. What is required is writing both records from the same turn, with a clear owner for each.
+
+**Independent Test**: Complete one automatic-bot text turn with no pause. Confirm one customer inbox message and one bot inbox message, and matching customer and agent content in agent memory. Restart the process and confirm both records remain. Confirm the history the agent uses was not assembled from inbox messages.
+
+**Acceptance Scenarios**:
+
+1. **Given** an automatic-bot text turn completes without a pause, **When** both records are inspected, **Then** the inbox has one customer message and one bot message, and agent memory has the customer content and the agent content (and any extra actions from that turn).
+2. **Given** the next agent turn is prepared, **When** its history is assembled, **Then** it is assembled only from agent memory, not by copying inbox messages into that history.
+3. **Given** an operator views the inbox, **When** the thread is shown, **Then** it is shown only from inbox messages, not by reading agent-memory events.
+4. **Given** the application process restarts, **When** both records are read again, **Then** the inbox messages and the agent-memory events from that turn are still present.
+5. **Given** the only way for the bot to remember a prior turn is to copy inbox messages into the history the agent reads, **When** the demonstration is recorded, **Then** the result is a no-go.
+
+---
+
+### User Story 9 - The operator sees the channel; the agent remembers the gist (Priority: P2)
+
+Buttons, lists, locations, and media that go out on the channel must be visible in the operator inbox with enough detail to show them again (the options, the pin, the file), not as a vague note that "options were sent". Agent memory must not store the exact channel message used to draw that interface. It may store the small intent (the question and the option identities and titles, or coordinates) and a short gist of the result ("options shown; waiting for a click", "pin sent"). A click is an option identity in agent memory and a choice row in the inbox. The operator can read the option title from the last buttons message in that conversation, without opening agent memory.
+
+**Why this priority**: If the operator cannot see what the customer was shown, the inbox is incomplete. If the exact channel message is stored in agent memory, later turns waste the agent's attention and tend to echo raw interface data. Either failure is a no-go.
+
+**Independent Test**: Send a choice, a click, and a location. Confirm the inbox can show the choices and a pin from inbox messages alone, including after restart, and that no agent-memory event contains the exact channel message used to draw them.
+
+**Acceptance Scenarios**:
+
+1. **Given** the agent asks for a choice and buttons are sent, **When** agent memory and the inbox are inspected, **Then** no agent-memory event contains the exact channel message used to draw the buttons, the remembered result (if any) is a short gist or empty, and the inbox buttons message includes the full set of option identities and titles that were sent on the channel.
+2. **Given** the agent requested a choice, **When** the remembered request details are inspected, **Then** they may include the question and small options (identity and title) and must not include the exact channel message used to draw the buttons.
+3. **Given** the customer clicks an option, **When** both records are inspected, **Then** agent memory stores the option identity on the choice response, and the inbox has a choice row whose text is the option title when known (otherwise the option identity). A user text of the option letter is not the only trace.
+4. **Given** a location is sent on the channel, **When** both records are inspected, **Then** the inbox has a location message with coordinates, and agent memory has either small coordinates on the request or a short gist such as a pin being sent — not the exact channel location message.
+5. **Given** only inbox messages, **When** an inbox view is built, **Then** it can show the question and the option choices (or the pin, or the media caption) without reading agent-memory events, and those messages remain after a process restart.
+6. **Given** a media item is sent on the channel, **When** the inbox is inspected, **Then** it has a media message with a caption or filename and enough detail to open the item (where it is, and what type it is). Agent memory does not store the exact channel media message.
+
+---
+
+### User Story 10 - A live WhatsApp customer can talk to the same agent (Priority: P2)
+
+A customer on WhatsApp sends a text. The messaging network must receive an immediate success acknowledgement. The same conversation, queue, pause/resume, and human-takeover rules apply as on the simulated channel. Bot and operator replies, including choice buttons, reach the customer's WhatsApp thread. A button tap on WhatsApp resumes the pending choice. Duplicate delivery of the same WhatsApp message is ignored. When WhatsApp credentials are not configured, this story is skipped rather than failed, and the architecture decision path still uses the simulated channel.
+
+**Why this priority**: The existing host proof treated live WhatsApp as a demo path, not the architecture decision. This proof must still be able to interact with a real WhatsApp customer, because that is how operators and reviewers will exercise the host. Live WhatsApp is not a substitute for the simulated-channel go/no-go evidence.
+
+**Independent Test**: With channel credentials present, send a WhatsApp text, confirm acknowledgement before the agent reply, confirm the reply arrives on WhatsApp, tap a choice button, and confirm resume. Without credentials, confirm the simulated inbound path still works and this story is recorded as skipped.
+
+**Acceptance Scenarios**:
+
+1. **Given** WhatsApp channel credentials are configured, **When** a customer sends a text on WhatsApp, **Then** the messaging network receives success immediately, a conversation is found or created from the WhatsApp sender identity, and the agent turn is scheduled as background work using the same rules as simulated inbound.
+2. **Given** the agent asks for a choice, **When** buttons are sent, **Then** the customer sees those buttons on WhatsApp, and a tap on an option resumes the same pending choice rather than becoming typed customer text.
+3. **Given** an operator replies to that conversation, **When** the reply is accepted, **Then** the customer receives that text on WhatsApp, the inbox stores an operator message, and the agent is not asked to generate a reply.
+4. **Given** the same WhatsApp message is delivered twice, **When** the second delivery arrives, **Then** it is ignored and does not create a second customer inbox row or a second agent turn.
+5. **Given** the customer just sent a message, **When** the host is about to reply, **Then** WhatsApp is told the message was seen and that a reply is being composed, when the network supports that signal.
+6. **Given** WhatsApp channel credentials are not configured, **When** the proof is demonstrated, **Then** live WhatsApp scenarios are skipped rather than failed, and the simulated inbound path remains the architecture decision path.
+7. **Given** a reviewer or the messaging network asks to verify the webhook subscription, **When** the expected verify secret is presented, **Then** verification succeeds; when it is missing or wrong, verification is refused.
+8. **Given** an inbound WhatsApp payload whose authenticity cannot be confirmed, **When** a signing secret is configured, **Then** the payload is rejected and no conversation work is scheduled.
+
+---
+
+### User Story 11 - A reviewer can decide go or no-go from a written record (Priority: P1)
+
+The outcome of this proof is a decision, not a feature shipped to customers. A reviewer must be able to answer each architecture question from a written record, with evidence, and see an overall recommendation. If immediate acknowledgement or burst batching fails, the record is still written and the remaining work is not required to justify the queue. The record must also say whether this host matches the existing host proof on the decision path, and whether live WhatsApp worked when credentials were present.
+
+**Why this priority**: The proof exists to choose an architecture. Behaviors without a recorded decision do not finish the job. An early stop with a clear no-go is a successful outcome of the proof.
+
+**Independent Test**: After the demonstrations (or after an early stop), read only the decision record and confirm every question has a result and evidence, and that the overall recommendation follows the published go / no-go rules.
+
+**Acceptance Scenarios**:
+
+1. **Given** the demonstrations have finished or stopped early, **When** a reviewer reads the decision record, **Then** each question below has a result and the evidence that supports it.
+2. **Given** the published go / no-go rules, **When** the overall recommendation is read, **Then** it is yes, no, or yes-with-conditions for putting the conversational agent behind a durable queue (one organization, one new agent rather than a port), a separate no or later for porting the existing specialist agents, and a separate result for live WhatsApp (pass, skip, or fail).
+3. **Given** immediate acknowledgement or burst batching has failed, **When** the proof stops, **Then** the decision record is still written, and further stories are not required in order to reject the queue.
+
+The decision record must answer:
+
+1. Does the channel receive acknowledgement before the agent runs?
+2. Does delayed work survive an application restart?
+3. Do three texts become one agent turn?
+4. Is a text that arrives during a turn still processed afterward?
+5. Does another conversation stay responsive during a turn?
+6. Is background processing worth it compared with running the agent while the customer is still waiting on acknowledgement? Answer yes, no, or yes with a separate background service.
+7. Does a choice pause complete, and does the click resume as a choice response rather than typed text?
+8. Does the pause survive restart from durable agent memory, not only from process memory?
+9. Is the conversation identity the agent session identity, with the channel identity stored separately?
+10. Does human takeover skip the agent for messages accepted after the takeover (a turn already scheduled before the takeover may still run)?
+11. Does an operator reply enter agent memory without generating an agent reply, and show up on the next turn?
+12. Are inbox messages and agent memory both written, without using the inbox as the history the agent reads?
+13. Do buttons, lists, and clicks appear in the inbox for the operator?
+14. Is the remembered result a short gist, not the exact channel message?
+15. Are remembered request details small intent (the question and option identities), not the exact channel message?
+16. Does resume store the option identity in agent memory and a choice row in the inbox?
+17. Can the inbox be rendered without reading agent-memory events?
+18. Does a retry avoid sending buttons twice?
+19. Does a pause avoid sending both leftover prose and buttons?
+20. Go for agent plus durable queue? Yes, no, or yes with conditions.
+21. Go for porting the existing specialist agents? No, or later.
+22. Does this host match the existing host proof on the simulated-channel decision path?
+23. Can a live WhatsApp customer complete text plus a choice when credentials are present? Pass, skip, or fail.
+
+---
+
+### User Story 12 - A lightweight routing brain can be exercised in the lab (Priority: P3)
+
+A reviewer can opt into a lightweight routing brain (not the production specialist agents). That brain can classify whether the customer should stay with the automatic bot or wait for a human, keep conversation state across turns, and stop after it has sent an outbound message instead of talking over itself. Live classification quality is optional. This story is not required to accept or reject the durable queue.
+
+**Why this priority**: The existing host proof separated queue evidence from brain-port evidence. This host should allow the same lab exercise so the team can compare, without making a specialist-agent port a condition of the queue go.
+
+**Independent Test**: Opt into the lightweight brain, send a greeting, a request to speak with a human, and a follow-up after a fake classification, and confirm routing, state, and a single outbound. Live model classification may be skipped.
+
+**Acceptance Scenarios**:
+
+1. **Given** the lightweight brain is selected, **When** a greeting arrives, **Then** the customer receives a bot reply and the conversation stays in automatic-bot.
+2. **Given** the lightweight brain decides the customer should wait for a human, **When** that turn finishes, **Then** the conversation is waiting-for-human and further customer texts do not start the automatic bot until release.
+3. **Given** conversational-model access is not available, **When** this story is demonstrated, **Then** scripted or fake classification is enough for the lab, and live classification is skipped rather than failed.
+
+---
+
+### User Story 13 - A reviewer can inspect one conversation without a production console (Priority: P3)
+
+A reviewer can look at one conversation's inbox, status, and a short preview of agent memory without reading production CRM screens. This view is for the proof only. It is not required for a go.
+
+**Why this priority**: Human review of pause, takeover, and WhatsApp turns is faster with an inspection view. It must not become a product console.
+
+**Independent Test**: Complete one inbound turn, open the inspection view for that conversation identity, and confirm inbox rows, status, and a short memory preview are visible.
+
+**Acceptance Scenarios**:
+
+1. **Given** a conversation identity from inbound acknowledgement, **When** a reviewer opens the inspection view, **Then** they see status, channel identity, inbox messages, and a short agent-memory preview.
+2. **Given** that view, **When** it is compared with the inbox rules, **Then** the thread is still shown from inbox messages, not by inventing a new history source.
+
+---
+
+### Edge Cases
+
+- A second or third text arrives while a delayed turn for that conversation is already scheduled: the text is kept and included; a second turn for that window is not started.
+- A text arrives while a turn is already running: a follow-up turn must include it. Omitting the follow-up and losing the text is a failure.
+- A button click is waiting in the same window as free text: the click is not drained together with the texts. Mixing them breaks choice resume.
+- A button click arrives while a turn for that conversation is already running: the click is scheduled right away and is not mixed into the text batch, but it does not run until that turn finishes. It is not dropped and it does not cancel the in-progress turn. When it then runs, it resumes only if a choice is pending; otherwise it is stored and does not start the agent.
+- A click arrives when no choice is pending: it is stored as a choice message in the inbox. The agent does not run. No typed customer text is invented for that click.
+- Background work fails after buttons were already sent: the retry must not send a second set of buttons for the same choice request.
+- The process restarts between a choice ask and the click: resume must use durable agent memory. If the pending choice lives only in temporary memory that disappears when the process stops, that is a design failure.
+- A conversation is closed, then the same channel identity writes again: a new conversation and a new agent session are created. The closed thread is not reused.
+- A conversation is waiting for a human or a human is active: a message accepted after that status change is stored; it does not start the agent; no bot text or buttons are sent for that new message.
+- A turn was already scheduled before the conversation left automatic-bot: that turn still runs the agent, even if the status is later waiting-for-human, human-active, or closed. It is not cancelled and its texts are not discarded. This is not a failure of human takeover.
+- The agent both speaks and asks for a choice in the same turn: the customer does not receive leftover prose in addition to the buttons. If that cannot be withheld, delivery to the customer is a no-go.
+- The exact channel message used to draw buttons, a pin, or media appears in agent memory: that is a failure. The fix is to store a gist before memory is stored, not to accept that message in memory.
+- The inbox has only a vague text such as "options were sent", with no option list, coordinates, or media details: the operator cannot show the thread. That is a failure, and it is not fixed by putting the channel message into agent memory.
+- Acknowledgement is implemented by waiting until the background turn finishes: that fails the immediate-acknowledgement criterion even if a queue is involved.
+- Each message becomes its own background turn with no burst grouping: the queue is not worth it; it is the current behavior plus extra infrastructure.
+- A durable queue cannot be stood up within about an hour of effort: the queue items are marked blocked and the proof stops. Short in-application delays are not an acceptable substitute for a durable queue.
+- Background work blocks other conversations: record that a separate background service is required. Do not build that service in this proof.
+- The clicked option's title is unknown: the inbox choice row stores the option identity.
+- Conversational-model access is not available: demonstrations that need the agent to ask a choice or to reflect an operator fact are skipped, not failed. Location and media inbox mapping may use a channel stand-in without a live model.
+- Two open conversations for the same channel identity must not result from ordinary find-or-create. An open conversation is reused.
+- WhatsApp credentials are missing: live WhatsApp is skipped; simulated inbound remains the decision path.
+- The same WhatsApp message identifier is delivered twice: the second delivery is ignored.
+- A WhatsApp payload cannot be authenticated when a signing secret is configured: it is rejected.
+- A reviewer tries to send a proactive WhatsApp nudge after the customer-care window has closed: the nudge is refused; inbound replies inside an open window still work.
+- Incoming records with missing required fields or the wrong shape are rejected with a clear error and do not schedule agent work.
+
+## Requirements *(mandatory)*
+
+### Functional Requirements
+
+- **FR-001**: Accepting a customer message MUST return success before the agent finishes the turn. That success MUST include the conversation identity, including when the conversation was just created. When the turn takes about 1.5 seconds, success MUST be returned within 100 milliseconds, and the customer-facing reply MUST arrive only after that acknowledgement.
+- **FR-002**: Accepting a customer message MUST only record the message and schedule background work. It MUST NOT wait for the agent turn to finish before responding.
+- **FR-003**: A failed agent turn MUST be retried and then completed, up to 3 attempts, with about 1 second between attempts.
+- **FR-004**: A scheduled turn MUST still run after the application process restarts, provided the durable queue and the conversation stores remain available.
+- **FR-005**: Several customer texts that arrive within the grouping window for the same conversation MUST become exactly one agent turn whose customer input contains all of those texts.
+- **FR-006**: Further texts that arrive while a delayed turn is already scheduled for that conversation MUST still be included in that single turn. They MUST NOT start a competing turn for the same window.
+- **FR-007**: Customer texts that arrive while a turn is already running MUST be included in a follow-up turn after the current one finishes. Losing them MUST be treated as a failure.
+- **FR-008**: Button clicks and human-handoff actions MUST NOT enter the text grouping batch. A click MUST be scheduled immediately and separately from free text. If a turn for that conversation is already running, the click MUST wait until that turn finishes before it runs. It MUST NOT run in parallel with that turn, MUST NOT be dropped, and MUST NOT cancel the in-progress turn.
+- **FR-009**: While one conversation's agent turn is waiting about 1.5 seconds on outside work, another conversation's inbound or a health check MUST succeed within 200 milliseconds. A demonstration that freezes the application on purpose is not valid.
+- **FR-010**: If FR-009 cannot be met because the application is stuck, the decision record MUST state that a separate background service is required. That service MUST NOT be built in this proof.
+- **FR-011**: The agent MUST NOT be invoked as part of accepting an inbound message. The turn runs as background work.
+- **FR-012**: When the agent asks the customer to choose, the turn MUST complete (a pause is not work left hanging), buttons MUST be shown once, and a pending choice MUST be recorded. The inbox MUST show that a buttons message was sent.
+- **FR-013**: A click on a pending choice MUST resume that choice. Agent memory MUST record the chosen option identity. A typed stand-in, such as the letter of the option, MUST NOT be the only trace of the click. A click when no choice is pending MUST be stored as a choice message in the inbox, MUST NOT run the agent, and MUST NOT be turned into typed customer text.
+- **FR-014**: A pending choice MUST survive an application restart. It MUST be recovered from durable agent memory. Temporary memory that disappears when the process stops MUST NOT be the only source.
+- **FR-015**: Retrying background work after buttons were already sent for a choice request MUST NOT send a second set of buttons for that same request.
+- **FR-016**: When a turn pauses for a choice, the customer MUST see one buttons message and MUST NOT also receive leftover prose from that turn. If the agent both speaks and asks for a choice, the prose MUST NOT be sent. If that cannot be withheld, the decision record MUST state a no-go for delivery to the customer.
+- **FR-017**: An inbound with a channel identity MUST find or create one open conversation in automatic-bot status. The agent's session identity MUST be the conversation's own identity. The channel identity MUST be stored on the conversation and MUST NOT be encoded into the session identity.
+- **FR-018**: Two different channel identities MUST produce two conversations and two agent sessions. The same channel identity MUST reuse the open conversation.
+- **FR-019**: Closing a conversation MUST cause the next inbound from that channel identity to create a new conversation and a new agent session.
+- **FR-020**: While a conversation is waiting for a human or a human is active, a customer message accepted after that status change MUST be stored as a customer inbox message, MUST NOT start a new agent turn, and MUST NOT send bot text or buttons. Takeover MUST set waiting-for-human only. This proof MUST NOT include a separate action that sets human-active. If that status is already set, new accepted messages MUST follow the same skip rule.
+- **FR-020a**: A turn already scheduled before the conversation left automatic-bot MUST still run the agent to completion, even if the status changes to waiting-for-human, human-active, or closed before that turn starts. It MUST use the conversation it was scheduled for. It MUST NOT be cancelled, and its texts MUST NOT be discarded. A follow-up scheduled only after the status change MUST follow FR-020 and MUST NOT start the agent.
+- **FR-021**: Releasing a conversation back to automatic-bot MUST allow the next inbound customer message to run the agent.
+- **FR-022**: An operator reply MUST be sent on the channel, stored as an operator inbox message, and written into agent memory without generating an agent reply.
+- **FR-023**: After an operator states a fact, the next customer question about that fact MUST be answered in light of that fact. If the operator statement cannot be made visible to the agent, that MUST be recorded as a failure. Copying inbox messages into the history the agent reads MUST NOT be used as a substitute.
+- **FR-024**: After an automatic-bot text turn with no pause, the inbox MUST contain one customer message and one bot message, and agent memory MUST contain the customer content and the agent content (and any extra actions from that turn).
+- **FR-025**: The agent MUST assemble the history for its next turn only from agent memory. It MUST NOT read the inbox to assemble that history. The operator inbox MUST be shown only from inbox messages. It MUST NOT be shown by reading agent-memory events.
+- **FR-026**: Inbox messages and agent-memory events MUST both survive an application restart.
+- **FR-027**: Using inbox messages as the history the agent reads, so the bot remembers, MUST be treated as a no-go.
+- **FR-028**: When buttons, a list, a location, or media are sent on the channel, the inbox MUST store enough detail to show that item again, not only a vague text fallback. The mapping MUST be: text stores the text; buttons store the question plus the full options (identity and title) and enough to match a later click to that buttons message; a list stores the question plus any button label and the sections or options; a location stores a name or coordinates plus latitude, longitude, name, and address; media stores a caption or filename plus where the item is, what type it is, and the caption; an inbound choice stores the option title when known (otherwise the option identity) plus the option identity.
+- **FR-029**: Agent memory MUST NOT store the exact channel message used to draw buttons, a list, a pin, or media. It MAY store small intent (the question and option identity/title, or coordinates) and a short gist of the result. A remembered result that is exactly that gist is acceptable. Small intent on the request is acceptable. The exact channel message is not.
+- **FR-030**: A customer click MUST be stored in agent memory as the option identity on the choice response, and in the inbox as a choice message. The operator MUST be able to read the option title from the last buttons message in that conversation, without reading agent memory.
+- **FR-031**: An inbox view MUST be constructable from inbox messages alone (the question plus the choices, the pin, or the media), including after restart.
+- **FR-032**: If the only remembered result of a send is the full channel message and there is no way to keep only a gist, the decision record MUST say the gist has to be written before memory is stored. It MUST NOT recommend storing the full channel message in agent memory.
+- **FR-033**: The proof MUST produce a written decision record that answers every question listed in User Story 11, each with a result and evidence, plus an overall recommendation.
+- **FR-034**: A go for agent-plus-durable-queue MUST be recorded only when immediate acknowledgement, burst batching, follow-up of texts that arrived during a turn, restart survival, choice pause and resume (including after restart), conversation identity as the agent's session identity, human takeover of messages accepted after the takeover, retry without a second button send, and the inbox/gist split all pass. Other-conversation responsiveness MUST pass, or the record MUST explicitly require a separate background service. Operator-visible-to-agent and separate durable histories MUST pass, or the record MUST document a workaround that still writes the operator statement into agent memory rather than copying inbox messages into the history the agent reads.
+- **FR-035**: A no-go MUST be recorded if any of the following is true: resume is only typed text; retry sends buttons twice; inbox messages are copied into the history the agent reads; a message accepted after human takeover still starts the agent; delayed work does not survive restart; texts cannot be grouped into one turn; the operator cannot see buttons or lists because they exist only in agent memory or in temporary memory that disappears when the process stops; or the exact channel message used to draw the interface enters agent memory. An already-scheduled turn that still runs after takeover is not a no-go.
+- **FR-036**: Background processing MUST be recorded as not worth it if acknowledgement waits until the background turn finishes, or if there is no burst batching (one background turn per message).
+- **FR-037**: Porting the existing specialist agents MUST remain no or later in the decision record. This proof MUST NOT reverse that conclusion.
+- **FR-038**: Demonstrations that require the agent to ask a choice or to reflect an operator fact MUST run only when conversational-model access is available. When it is not, those demonstrations MUST be skipped rather than failed. Location and media inbox mapping MAY be shown with a channel stand-in and no live model.
+- **FR-039**: Takeover, release, close, operator reply, inbound acceptance, inbound choice, and health check MUST be available as direct actions in the proof. Takeover, release, close, and operator reply MUST be addressable by the conversation identity returned when the customer message was accepted. A full operator console is not required.
+- **FR-040**: If a durable queue cannot be stood up within about one hour, the queue portion MUST be marked blocked and the proof MUST stop. Short delays inside the application MUST NOT be substituted for a durable queue.
+- **FR-041**: Every inbound, outbound, and inspection record that crosses a process boundary MUST have an explicit, validated shape. Missing required fields MUST be rejected. Untyped catch-all records MUST NOT be the public contract of the proof.
+- **FR-042**: The simulated inbound path (channel identity plus text or button id) MUST remain the architecture decision path. Live WhatsApp MUST use that same conversation, queue, pause, and takeover behavior; it MUST NOT be a second, incompatible agent host.
+- **FR-043**: When WhatsApp credentials are configured, inbound WhatsApp texts and button taps MUST enter the same find-or-create conversation path as simulated inbound. Bot and operator outbound text, buttons, lists, location, and media MUST be delivered to the customer's WhatsApp thread.
+- **FR-044**: When a signing secret is configured, inbound WhatsApp payloads whose authenticity cannot be confirmed MUST be rejected. Webhook subscription verification MUST succeed only with the expected verify secret.
+- **FR-045**: Duplicate WhatsApp message identifiers MUST be ignored. The host MUST mark the inbound customer message as seen and, when the network supports it, signal that a reply is being composed, before the agent turn finishes.
+- **FR-046**: When WhatsApp credentials are not configured, live WhatsApp demonstrations MUST be skipped rather than failed. A proactive outbound outside the customer-care window MUST be refused.
+- **FR-047**: An optional lightweight routing brain MUST be selectable without replacing the default automatic-bot agent used by the decision path. Lab routing with scripted classification is enough; live classification quality is not a go/no-go for the queue.
+- **FR-048**: An optional inspection view of one conversation MAY show inbox messages, status, channel identity, a count of agent-memory events, and a short preview. It MUST NOT add production-only fields such as organization, platform message identifiers, or click-to-ad metadata. It is not required for a go.
+- **FR-049**: A health check MUST succeed without running the agent.
+
+### Key Entities
+
+- **Conversation**: An open customer thread. Has its own identity (this is the agent's session identity), a status, a channel identity used only to address replies, and a last-updated time. Status is one of automatic-bot, waiting-for-human, human-active, or closed.
+- **Inbox message**: What the operator sees for one conversation. Has a role (customer, bot, or operator), a kind (text, buttons, list, location, media, or choice), a short text fallback, and enough detail to show again what was sent or received on the channel. This record is not the history the agent reads.
+- **Agent memory event**: What the agent reads on the next turn. Holds customer content, agent content, small choice-request intent, a short result gist, and a choice response carrying an option identity. Does not hold the exact channel message used to draw buttons, a pin, or media.
+- **Inbound text buffer**: Pending customer texts for one conversation, waiting to be combined into a single turn. Button clicks and handoff actions are not buffer items.
+- **Outbound channel item**: What the customer actually received (text, buttons, list, location, or media). Used to show that a send happened once, and that a pause did not also emit leftover prose.
+- **Channel identity**: Who to address on the messaging network. For the simulated path this is a sender id. For WhatsApp this is the customer's WhatsApp identifier. It is stored on the conversation and is not the conversation identity.
+- **WhatsApp inbound**: A signed (when configured) customer text or button tap from WhatsApp, including a network message identifier used for de-duplication and seen/typing signals.
+- **Decision record**: The written outcome of the proof. One result and its evidence for each architecture question, an overall recommendation for agent-plus-durable-queue, a separate recommendation for porting existing specialist agents, a parity result versus the existing host proof, and a live-WhatsApp result (pass, skip, or fail).
+
+## Success Criteria *(mandatory)*
+
+### Measurable Outcomes
+
+- **SC-001**: A channel partner receives success within 100 milliseconds when the agent turn takes about 1.5 seconds. That success includes the conversation identity. The customer sees the agent reply only after that acknowledgement.
+- **SC-002**: In the burst demonstration, three texts sent inside the grouping window produce exactly one agent turn that contains all three texts.
+- **SC-003**: In the busy-turn demonstration, a text that arrives while a turn is running is included in a later turn. Zero such texts are lost.
+- **SC-004**: In the restart demonstration, a turn scheduled before the process stops still runs after the process starts again, when the durable queue and conversation stores remain available.
+- **SC-005**: In the retry demonstration, a turn that fails on the first attempt is completed on a later attempt, within 3 attempts, and the customer receives one reply.
+- **SC-006**: In the isolation demonstration, another conversation's message or a health check succeeds within 200 milliseconds while a 1.5-second turn is in flight — or the decision record states that a separate background service is required and confirms that service was not built.
+- **SC-007**: In the choice demonstration, a click after a process restart resumes the pending choice from durable memory, and the remembered response is the option identity rather than a typed letter as the only user text.
+- **SC-008**: In the choice-retry demonstration, the customer receives exactly one buttons message for that choice request.
+- **SC-009**: In the pause demonstration, the customer receives one buttons message and zero leftover prose messages — or the decision record states a no-go for delivery to the customer because leftover prose cannot be withheld.
+- **SC-010**: Two channel identities produce two conversations; the same identity reuses one open conversation; closing that conversation causes the next inbound to start a new one.
+- **SC-011**: Every inbound while a conversation is waiting for a human is stored, and produces zero agent turns and zero bot outbounds.
+- **SC-012**: After an operator states a concrete fact, the next customer question about that fact is answered with that fact in the demonstration (conversational-model access available).
+- **SC-013**: After a normal text turn and a process restart, both the inbox and agent memory still contain that turn, and the history the agent uses was not built from inbox messages.
+- **SC-014**: In the buttons and location demonstrations, the inbox has enough detail to show the options or the pin again, and no agent-memory event contains the exact channel message used to draw them. An inbox view can show the question and the choices or pin from inbox messages alone.
+- **SC-015**: A reviewer can answer all architecture questions in User Story 11 from the decision record alone, and the overall recommendation matches the go / no-go rules in FR-034 through FR-037.
+- **SC-016**: When conversational-model access is not available, demonstrations that depend on it are skipped rather than failed, and location and media inbox mapping can still be shown without a live model.
+- **SC-017**: In the overlapping-click demonstration, a click that arrives while a turn for that conversation is running is not lost, does not run until that turn finishes, and does not run at the same time as that turn.
+- **SC-018**: In the stray-click demonstration, a click with no pending choice is stored in the inbox, starts zero agent turns, and creates no typed customer text.
+- **SC-019**: When WhatsApp credentials are present, a customer can complete a text turn and a choice tap on WhatsApp without using the simulated inbound, and the messaging network is acknowledged before the agent reply. When credentials are absent, this outcome is skipped and recorded as skipped.
+- **SC-020**: 100% of public inbound and outbound records in the proof reject missing required fields instead of accepting an untyped payload.
+- **SC-021**: A reviewer comparing this proof with the existing host proof can confirm the same simulated-channel decision-path behaviors (acknowledgement, burst, follow-up, restart, choice resume, takeover skip, operator memory, inbox/gist split) without needing a production CRM.
+
+## Assumptions
+
+- This proof is the counterpart of the existing TypeScript agent-host proof. Behavioral parity on the simulated-channel decision path is the bar. Matching that host's internal names or folder layout is not required.
+- The audience is the team deciding whether a conversational agent behind a durable queue is fit for the same customer-messaging product on this stack. Demo fidelity, not a production port.
+- The simulated channel is the architecture decision path. Live WhatsApp is in scope as a first-class channel when credentials are present. Signatures, webhook verification, seen/typing, de-duplication, and the customer-care window are in scope for that channel. Templates, interactive multi-screen flows, voice calls, and per-tenant credentials are out of scope.
+- The production CRM schema, multi-organization rules, and a production database are out of scope. A small local conversation stub (conversation plus inbox messages) in a store that survives process restart is enough to answer the history question.
+- All public records (inbound, interactive, operator reply, conversation actions, inspection, WhatsApp webhook verify) use explicit required/optional fields with validation at the boundary, with the same rigor expected of a TypeScript proof. Internal catch-all maps are not the public contract.
+- The grouping window is a short demo value of about 400 milliseconds (within 300–500), not the longer production delay.
+- Retry budget is 3 attempts with about 1 second between attempts.
+- Conversation status values are automatic-bot, waiting-for-human, human-active, and closed. Closing (or otherwise marking the thread not open) is enough; either persisted-closed or removal of the open row is acceptable, as long as the next inbound creates a new conversation and a new agent session.
+- Both human-owned statuses skip the agent for messages accepted after the status change. A turn already scheduled before that change still runs. The proof's takeover action sets waiting-for-human. There is no action that sets human-active; that status is only exercised if it is already set. Release returns the conversation to automatic-bot.
+- Acceptable conditions on a "yes" recommendation: a durable queue is mandatory; one organization; lightweight local stores rather than the production database; writing an operator statement into agent memory may be unusual but must work; the grouping window is a short demo value; a separate background service is acceptable only if isolation failed; live WhatsApp may be skipped when credentials are absent.
+- A legacy demo path that addresses an existing session identity directly (without find-or-create by channel identity) may exist for local experiments. It is not the decision path.
+- An optional inspection view and an optional lightweight routing brain are not required for a queue go.
+- Porting production specialist agents (skills plus agenda, full qualifier quality, production CRM last-mile) stays out of scope. Lab routing with a lightweight brain is optional.
+- Push notifications, reminders, inbound media handling beyond storing enough inbox detail, and delivery-status callbacks are out of scope.
+- No project constitution principles were in force beyond this brief; this specification is the scope boundary.
+- Comparison to the product's current queue pattern is conceptual: one scheduled turn per conversation during the grouping window, ignore a duplicate schedule, take the buffered texts once, and follow up if more text arrived while busy. The production product is not copied into this proof.
+- Reference behavior for the decision path is the TypeScript proof's inbound-by-channel-identity, interactive click, takeover, operator reply, and health-check actions. Live WhatsApp in that proof was not the decision path; this proof still implements live WhatsApp as a first-class channel.
